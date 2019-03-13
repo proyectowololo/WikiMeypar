@@ -1,0 +1,19 @@
+{
+  "name": "wikimeypar",
+  "version": "1.0.0",
+  "description": "Wiki para Meypar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proyectowololo/WikiMeypar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/proyectowololo/WikiMeypar/issues"
+  },
+  "homepage": "https://github.com/proyectowololo/WikiMeypar#readme"
+}
