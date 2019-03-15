@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/proyectowololo/WikiMeypar/issues"
   },
-  "homepage": "https://github.com/proyectowololo/WikiMeypar#readme"
+  "homepage": "https://github.com/proyectowololo/WikiMeypar#readme",
+  "dependencies": {
+    "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
+  }
 }

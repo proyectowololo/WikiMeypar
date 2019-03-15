@@ -1,0 +1,63 @@
+
+<p><strong>ADV - PROCESO DE PAGO - PAGO EN SALIDA - TDC</strong></p>
+
+
+
+<h5> Introducción. </h5>
+
+
+
+<p style="font-size:14.5px">El presente documento tiene como objetivo facilitar las pautas básicas a la hora de interpretar la lectura de los LOG’s del sistema para el proceso de Pago en el dispositivo de “Pago en Salida” y realizando el pago con una tarjeta de crédito.</p>
+
+
+
+<h5> Actividad. </h5>
+
+
+
+<p style="font-size:12.5px"><strong>PROCESO:</strong> TRAZEADO del proceso de pago. <br/><strong>DISPOSITIVO:</strong> Pago en salida. <br/><strong>DESCRIPCIÓN: </strong>Pago con tarjeta. </p>
+
+
+
+<h5> Componentes Involucrados. </h5>
+
+
+
+<p style="font-size:12.5px"><em>- TPA                             -> (AdventaTPA.exe) (LibOperTC_EMV.dll)(LibChipDNA.dll) (c\Program Files\Meypar\Adventa\AdventaTPA\logs\TPA.log)<br/>- ChipDNAServer         -> (Creditcall.ChipDna.ClientLib.dll)  (c\ChipDNA\ChipDNA Server\logs\ChipDNAServer.log)<br/>- Servidor CreditCall    -> iSelf Ingenico   (PinPad)</em></p>
+
+
+
+<h5> Lectura del LOG. </h5>
+
+
+
+<p style="font-size:13.5px">Pago en salida de Dallas 2018-10-17 09:22 con el ticket rotación 0074397.</p>
+
+
+
+<ol><li><p style="font-size:13.5px">| <font color="#2874A6">2018-11-06 12:08:18.228</font> | <font color="#A93226">TPA</font> | IdentificarBanda: Banda plana '053000900300812628310604991800101100000000000000000000005'. |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:22:16.499</font> | <font color="#A93226">TPA</font> | Arrancado máquina ChipDNA - Start() |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:22:42,145</font> | <font color="#A93226">ChipDNAServer</font> | ChipDNA #lc.#kc: StartTransaction: Terminal ID=25018444, Parameters=[ Key: AMOUNT, Value: 300 ],... |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:23:00.663</font> | <font color="#A93226">ChipDNAServer</font> | ChipDNA #Uf.#ji::PaymentDeviceOnCardNotificationEvent(..) CurrentEvent: Swiped |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:23:00.678</font> | <font color="#A93226">TPA</font> | FireCardStatusEvent(TARJETA_LEIDA): |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:23:05.811</font> | <font color="#A93226">ChipDNAServer</font> | ChipDNA #lc.#kc: TransactionFinished -&gt; [ Key: TRANSACTION_RESULT, Value: APPROVED ],... |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:22:05.811</font> | <font color="#A93226">TPA</font> | ChipDNATransactionFinished event detected |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:22:05.982</font> | <font color="#A93226">TPA</font> | LLamada a ShowWPFInformacionProcesando: PAYMENT COMPLETED |</p></li></ol>
+
+
+
+<p style="font-size:13.5px">Procederemos a explicar cada una de las líneas del log, para poder identificar los pasos que realizan los distintos componentes involucrados.</p>
+
+
+
+<p style="font-size:14.5px"><strong>01.-</strong> Identificación de la banda recibida. (TPA)<br/><strong>02.-</strong> Inicio de la máquina de estado del ChipDNA que comunica con el servidor de CreditCall. Inicia la petición de transacción. (LibOperTC_EMV)<br/><strong>03.-</strong> Inicio de transacción. Se muestra también información relacionada con la transacción. (Servidor CreditCall)<br/><strong>04.-</strong> Evento de tarjeta extraída del PinPad. Dicho evento significa que el usuario ya ha completado su parte, y que se ha extraído la tarjeta del PinPad para proceder con la transferencia<br/><strong>05.-</strong> Evento recibido por parte del driver ChipDNA y envió del FireEvent al TPA. (LibOperTC_EMV)<br/><strong>06.-</strong> Finalización de la transacción con el resultado de "APPROVED". (Servidor CreditCall)<br/><strong>07.-</strong> Fin de la máquina de estado del ChipDNA.<br/><strong>08.-</strong> Evento de Pago completado recibido por el TPA. (TPA)</p>
+
+
+
+<p style="font-size:13.5px">Se muestran una transacción finalizada correctamente y otra finalizada con error (declinada). <br/>Por lo general, todas las operaciones que no terminen correctamente, con el pago completado y aprobado, debería de seguir el mismo patrón que la actual DECLINED. <br/>Entre el punto <strong>05</strong> y <strong>07</strong> podríamos ver los distintos errores sucedido en la transacción. </p>
+
+
+
+<h5>Casuísticas encontradas en las distintas operaciones:</h5>
+
+
+
+<h6>En caso de cancelación por parte del PinPad:</h6>
+
+
+
+<ol><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:31:23,550</font> | <font color="#A93226">ChipDNAServer</font> | ChipDNA #lc.#kc: TransactionFinished -&gt; [ Key: ERRORS, Value: EposTransactionTerminated ],
+En caso de error producido por el PinPad: |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:22:42,083</font> | <font color="#A93226">ChipDNAServer</font> | ChipDNA PaymentEngine: PerformRequest(RequestData,...) Failed. [Reference=0009001600010…] [Error=ServerCommunicationError] |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:22:42,099</font> | <font color="#A93226">ChipDNAServer</font> | ChipDNA #lc.#kc: TransactionFinished -&gt; [ Key: ERRORS, Value: FloorLimitExceeded,ServerCommunicationError ],[ Key: TRANSACTION_RESULT, Value: DECLINED],... |</p></li><li><p style="font-size:13.5px">| <font color="#2874A6">2018-10-17 09:22:42.130</font> | <font color="#A93226">TPA</font> | ERROR_TERMINAL detectado, intentamos nueva transaccion |</p></li></ol>
