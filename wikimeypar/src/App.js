@@ -3,6 +3,7 @@ import logo from './aj0c06i.gif';
 import './App.css';
 import LeerLogs from './snh/LeerLogs';
 import ADV_PS_Efectivo from './snh/ADV_PS_Efectivo';
+import Landing from './Components/Landing'
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
+            <Landing/>
             <LeerLogs/>
             <ADV_PS_Efectivo/>
           </p>
