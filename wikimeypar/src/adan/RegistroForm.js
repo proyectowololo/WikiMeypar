@@ -37,7 +37,8 @@ export default class Login extends Component{
                                     name="nombre" 
                                     type="text" 
                                     className="form-control" 
-                                    onChange={this.handleInput}/>
+                                    onChange={this.handleInput}
+                                    placeholder=""/>
                                 </div>
                                 <div className="form-group">
                                     <label for="text">Apellidos:</label>
@@ -51,7 +52,7 @@ export default class Login extends Component{
                                     <label for="text">Correo Electr&oacute;nico:</label>
                                     <input 
                                     name="correo" 
-                                    type="text" 
+                                    type="email" 
                                     className="form-control" 
                                     onChange={this.handleInput}/>
                                 </div>  
