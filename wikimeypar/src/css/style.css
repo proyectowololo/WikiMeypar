@@ -500,7 +500,8 @@ h1, h2, h3, h4, h5, h6, figure, p {
 .colorlib-counters {
   background-size: cover;
   background-attachment: fixed;
-  background-position: center center; }
+  background-position: center center;
+  background-image: url(../img/smartcity.jpg) }
   .colorlib-counters .overlay {
     z-index: 0;
     position: absolute;
@@ -1470,3 +1471,7 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+
+  .particle{
+    position: absolute;
+  }
