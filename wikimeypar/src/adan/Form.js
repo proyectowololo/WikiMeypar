@@ -22,7 +22,6 @@ class FORM extends Component{
         this.setState({
             [name] : value
         });
-        console.log(this.state);
     }
     render(){
         var estiloU = {"text-decoration":"underline"};
