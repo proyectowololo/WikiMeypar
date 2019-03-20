@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Nav from '../Components/Nav'
 
 export default class FORM extends Component{
     constructor(){
@@ -46,6 +47,7 @@ export default class FORM extends Component{
             <div className="container-fluid mt-3">
                 <div className="row">
                     <div className="col-md">
+                    <Nav/>
                         <form >
                             <div className="row">
                                 <div className="col-3">
