@@ -22,6 +22,7 @@ import Nav from './Components/Nav'
 import Presentation from './Components/Landing/Presentation'
 import Carousel from './Components/Landing/Carousel'
 import Information from './Components/Landing/Information'
+import Form from './adan/BoletaServicioFrom'
 
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
         <header className="App-header">
           <p>
             <Nav/>
+            <Form />
             <Presentation/>
             <Carousel/>
             <Information/>
