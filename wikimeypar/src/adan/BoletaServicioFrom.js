@@ -107,7 +107,7 @@ export default class BoletaServicio extends Component{
                             <div className="row">
                                 <div className="col-3 text-center">
                                     <label className="font-weight-bold">CDMX</label>
-                                    <input type="radio" className="form-control inline-block" name="CDMX-INt" value="CDMX"/>
+                                    <input type="radio" className="form-control inline-block" name="CDMX-INt" value="CDMX" checked/>
                                 </div>
                                 <div className="col-3 text-center">
                                     <label className="font-weight-bold">Interior Rep.</label>
@@ -154,13 +154,13 @@ export default class BoletaServicio extends Component{
                             <div className="col-md">
                                 <div className="row">
                                     <div className="col text-center">
-                                        <div className="col-md">
+                                        <div>
                                             <label className="font-weight-bold d-inline col-2">Servicio de Emergencia</label>                                            
                                         </div>
-                                        <div className="col-md">
+                                        <div>
                                             <label className="font-weight-bold d-inline col-2">Entrega de Equipo</label>                                            
                                         </div>
-                                        <div className="col-md">
+                                        <div>
                                             <label className="font-weight-bold d-inline col-2">Otro</label>
                                             <input type="checkbox"  onClick={this.handleClick} />
                                         </div>       
@@ -249,32 +249,32 @@ export default class BoletaServicio extends Component{
                                 </div>
                                 <div className="col">
                                     <div className="col-md">
-                                        <label className="font-weight-bold">Si</label><input type="checkbox" />
+                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-1" checked/>
                                     </div>
                                     <div className="col-md">
-                                        <label className="font-weight-bold">Si</label><input type="checkbox" />
+                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-2" checked/>
                                     </div>
                                     <div className="col-md">
-                                        <label className="font-weight-bold">Si</label><input type="checkbox" />
+                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-3" checked/>
                                     </div>
                                     <div className="col-md">
                                         <label className="font-weight-bold">Fecha: </label><input type="date" className="form-control"/>
-                                        <label className="font-weight-bold">Inicio: </label><input type="date" className="form-control"/>
+                                        <label className="font-weight-bold">Inicio: </label><input type="time" className="form-control"/>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="col-md">
-                                        <label className="font-weight-bold">No</label><input type="checkbox" />
+                                        <label className="font-weight-bold">No</label><input type="radio" name="group-1" />
                                     </div>
                                     <div className="col-md">
-                                        <label className="font-weight-bold">No</label><input type="checkbox" />
+                                        <label className="font-weight-bold">No</label><input type="radio" name="group-2" />
                                     </div>
                                     <div className="col-md">
-                                        <label className="font-weight-bold">No</label><input type="checkbox" />
+                                        <label className="font-weight-bold">No</label><input type="radio" name="group-3" />
                                     </div>
                                     <div className="col-md">
                                         <label className="font-weight-bold">Fecha: </label><input type="date" className="form-control"/>
-                                        <label className="font-weight-bold">Termino: </label><input type="date" className="form-control"/>
+                                        <label className="font-weight-bold">Termino: </label><input type="time" className="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +296,6 @@ export default class BoletaServicio extends Component{
                     </div>     
                     <br/>    
                     <input type="submit" className="btn btn-primary col-12 form-control" value="Guardar" />
-                    <br/>    
                 </form>
             </div>
         );
