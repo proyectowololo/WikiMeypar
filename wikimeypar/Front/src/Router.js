@@ -4,6 +4,7 @@ import Landing from './Components/Landing'
 import Incidencia from './adan/IncidenciasForm'
 import Login from './adan/LoginForm'
 import Registro from './adan/RegistroForm'
+import Boleta from './adan/BoletaServicioFrom'
 
 const Router = () => (
     <Switch>
@@ -11,6 +12,7 @@ const Router = () => (
     <Route exact path="/incidencia" component={Incidencia} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/registro" component={Registro} />
+    <Route exact path="/boleta" component={Boleta} />
     </Switch>
 )
 
