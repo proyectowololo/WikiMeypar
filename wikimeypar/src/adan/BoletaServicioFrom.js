@@ -62,9 +62,9 @@ export default class BoletaServicio extends Component{
                         </div>
                         <div className="col-6 text-center">
                             <div className=" h3">
-                                Boleta de Servicio N&uacute;mero: <span className="font-weight-bold text-danger ">{this.state.numBoleta}</span>                           
+                                Boleta de Servicio <span className="font-weight-bold text-danger ">N° {this.state.numBoleta}</span>                           
                             </div>
-                            N&uacute;mero de Servicio: {this.state.servicio}
+                            N&uacute;mero de Servicio {this.state.servicio}
                         </div>
                     </div>
                     <br/>
