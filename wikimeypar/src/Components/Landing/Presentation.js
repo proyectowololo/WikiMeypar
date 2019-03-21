@@ -1,4 +1,17 @@
 import React, {Component} from 'react'
+import Particles from 'react-particles-js';
+
+const particleBackground = {
+    particles: {
+        number: {
+            value:150,
+            density:{
+                enable: true,
+                value_area: 800
+            }
+        }
+    }
+}
 
 class Presentation extends Component{
     constructor(){
@@ -6,9 +19,7 @@ class Presentation extends Component{
     }
     render(){
         return(
-            
-
-<div id="page">
+            <div id="page">
             <div class="colorlib-intro">
                 <div class="container">
                     <div class="row">
@@ -28,6 +39,7 @@ class Presentation extends Component{
             </div>
 
             </div>
+
         )
     }
 }
