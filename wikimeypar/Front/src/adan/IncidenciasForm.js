@@ -9,7 +9,9 @@ export default class FORM extends Component{
             incidencia: '',
             archivos: '',
             fecha:'',
-            usuario:''
+            usuario:'',
+            consecutivo: "0",
+            barcode: '456'
         };
         this.handleInput = this.handleInput.bind(this);
     }
@@ -49,6 +51,24 @@ export default class FORM extends Component{
                     <div className="col-md">
                     <Nav/>
                         <form >
+                            <div className="row">
+                                <div className="col-3 text-right">
+                                    <label className="h3 font-wieght-bold">
+                                        Consecutivo 
+                                        <span className="text-danger"> N° </span>
+                                    </label>
+                                </div>
+                                <div className="col-9 text-center">                                    
+                                    <label className="h3 font-wieght-bold">Incidencia -  
+                                    {                                        
+                                        (this.state.consecutivo.length == 1)?
+                                            " 00" + this.state.consecutivo :
+                                            (this.state.consecutivo.length == 2)?
+                                                " 0" + this.state.consecutivo : " " + this.state.consecutivo
+                                    }
+                                    </label>  
+                                </div>
+                            </div>
                             <div className="row">
                                 <div className="col-3">
                                     <label className="h3">T&iacute;tulo de la Incidencia</label>
