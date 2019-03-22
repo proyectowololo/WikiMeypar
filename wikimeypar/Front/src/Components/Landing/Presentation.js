@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Particles from 'react-particles-js';
+import { linkSync } from 'fs';
+import {Link} from 'react-router-dom'
 
 const particleBackground = {
     particles: {
@@ -30,8 +32,8 @@ class Presentation extends Component{
                                     a fin de contar con soluciones a la mano para su revisión puntual. Asimismo, un glosario con los términos
                                     mas utilizados, descarga de manuales y reporte de incidencias nuevas.
                                 </p>
-                                <p><a href="#" class="btn btn-primary btn-outline btn-md">Manuales</a>
-                                 <a href="#" class="btn btn-primary btn-outline btn-md">Reporta incidencia</a></p>
+                                <p><Link to='/manualeslist' class="btn btn-primary btn-outline btn-md">Manuales</Link>
+                                 <Link to='/incidencia' class="btn btn-primary btn-outline btn-md">Reporta incidencia</Link></p>
                             </div>
                         </div>
                     </div>

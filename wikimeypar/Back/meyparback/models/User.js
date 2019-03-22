@@ -2,12 +2,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-    name: {
+    nombre: {
         type: String
     },
-    password: {
+    apellido: {
         type: String
-    }
+    },
+    email: {
+        type: String
+    },
+    telefono: {
+        type: String
+    },
+    username: {
+        type: String
+    }   
 },{
     timestamps: {
         createdAt: "created_at",

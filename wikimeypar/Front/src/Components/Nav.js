@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 
 class Nav extends Component{
     constructor(){
@@ -13,25 +14,25 @@ class Nav extends Component{
                     <div class="container">
                         <div class="row">
                             <div class="col-md-2 text-center">
-                                <div id="colorlib-logo"><a href="index.html">Incidencias Meypar</a></div>
+                                <div id="colorlib-logo">Incidencias Meypar</div>
                             </div>
                             <div class="col-md-10 text-right menu-1">
                                 <ul>
-                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li class="active">Home</li>
                                     <li class="has-dropdown">
-                                        <a href="work.html">Incidencias</a>
+                                        Incidencias
                                         <ul class="dropdown">
-                                            <li><a href="#">Mey-tech</a></li>
-                                            <li><a href="#">Ingenia</a></li>
-                                            <li><a href="#">Adventa</a></li>
+                                            <li>Mey-tech</li>
+                                            <li>Ingenia</li>
+                                            <li>Adventa</li>
                                         </ul>
                                     </li>
-                                    <li><a href="services.html">Glosario</a></li>
-                                    <li><a href="blog.html">Apéndices</a></li>
-                                    <li><a href="about.html">Descargas y manuales</a></li>
-                                    <li><a href="contact.html">Reporta tu incidencia</a></li>
-                                    <li class="btn-cta"><a href="#">Sign Up</a></li>
-                                    <li class="btn-cta"><a href="#">Login</a></li>
+                                    <li>Glosario</li>
+                                    <li>Apéndices</li>
+                                    <li>Descargas y manuales</li>
+                                    <li>Reporta tu incidencia</li>
+                                    <li class="btn-cta"><Link to="/signup">Sign Up></Link></li>
+                                    <li class="btn-cta"><Link to="/login">Login</Link></li>
                                 </ul>
                             </div>
                         </div>
