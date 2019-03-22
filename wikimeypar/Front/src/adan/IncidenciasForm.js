@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Nav from '../Components/Nav'
+import Nav from '../Components/Nav';
 
 export default class FORM extends Component{
     constructor(){
@@ -10,8 +10,7 @@ export default class FORM extends Component{
             archivos: '',
             fecha:'',
             usuario:'',
-            consecutivo: 0,
-            barcode: '456'
+            consecutivo: 0
         };
         this.handleInput = this.handleInput.bind(this);
     }
@@ -46,81 +45,83 @@ export default class FORM extends Component{
     }
     render(){        
         return(
-            <div className="container-fluid mt-3">
-                <div className="row">
-                    <div className="col-md">
-                    <Nav/>
-                        <form >
-                            <div className="row">
-                                <div className="col-3 text-center">
-                                    <label className="h3 font-wieght-bold">
-                                        Consecutivo 
-                                        <span className="text-danger"> N° </span>
-                                    </label>
+            <div>
+                 <Nav/>
+                <div className="container-fluid mt-3">
+                    <div className="row">
+                        <div className="col-md">
+                            <form className="card">
+                                <div className="row text-right">
+                                    <div className="col-3 text-center">
+                                        <label className="h3 font-wieght-bold">
+                                            Consecutivo 
+                                            <span className="text-danger"> N° </span>
+                                        </label>
+                                    </div>
+                                    <div className="col-9 text-center">                                    
+                                        <label className="h3 font-wieght-bold">Incidencia -  
+                                        {                                        
+                                            (this.state.consecutivo.toString().length == 1)?
+                                                " 00" + this.state.consecutivo :
+                                                (this.state.consecutivo.toString().length == 2)?
+                                                    " 0" + this.state.consecutivo : " " + this.state.consecutivo
+                                        }
+                                        </label>  
+                                    </div>
                                 </div>
-                                <div className="col-9 text-center">                                    
-                                    <label className="h3 font-wieght-bold">Incidencia -  
-                                    {                                        
-                                        (this.state.consecutivo.toString().length == 1)?
-                                            " 00" + this.state.consecutivo :
-                                            (this.state.consecutivo.toString().length == 2)?
-                                                " 0" + this.state.consecutivo : " " + this.state.consecutivo
-                                    }
-                                    </label>  
+                                <div className="row">
+                                    <div className="col-3">
+                                        <label className="h3">T&iacute;tulo de la Incidencia</label>
+                                    </div>
+                                    <div className="col-9">
+                                        <input type="text" 
+                                        name="titulo"
+                                        className="form-control" 
+                                        ref={(input) => { this.titulo = input;}} 
+                                        onChange={this.handleInput} />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-3">
-                                    <label className="h3">T&iacute;tulo de la Incidencia</label>
+                                <div className="row">
+                                    <div className="col-3">
+                                        <label className="h3">Incidencia</label>
+                                    </div>
+                                    <div className="col-9"> 
+                                        <div className="hide">
+                                            <input name="bold" type="button" className="btn btn-secondary text-white"
+                                            value="Bold" onClick={this.SelText}/>
+                                            <input name="italic" type="button" className="btn btn-secondary text-white"
+                                            value="Italic" onClick={this.SelText} />
+                                            <input name="underline" type="button" className="btn btn-secondary text-white"
+                                            value="Underline" onClick={this.SelText} />    
+                                        </div>                                   
+                                        <textarea type="text" 
+                                        name="incidencia"
+                                        className="form-control" 
+                                        rows="10"
+                                        onChange={this.handleInput}/>
+                                    </div>
                                 </div>
-                                <div className="col-9">
-                                    <input type="text" 
-                                    name="titulo"
-                                    className="form-control" 
-                                    ref={(input) => { this.titulo = input;}} 
-                                    onChange={this.handleInput} />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-3">
-                                    <label className="h3">Incidencia</label>
-                                </div>
-                                <div className="col-9"> 
-                                    <div className="hide">
-                                        <input name="bold" type="button" className="btn btn-secondary text-white"
-                                        value="Bold" onClick={this.SelText}/>
-                                        <input name="italic" type="button" className="btn btn-secondary text-white"
-                                        value="Italic" onClick={this.SelText} />
-                                        <input name="underline" type="button" className="btn btn-secondary text-white"
-                                        value="Underline" onClick={this.SelText} />    
-                                    </div>                                   
-                                    <textarea type="text" 
-                                    name="incidencia"
-                                    className="form-control" 
-                                    rows="10"
-                                    onChange={this.handleInput}/>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-3">
-                                    <label className="h3">Archivos / Fotos</label>
-                                </div>
-                                <div className="col-9 mt-2">                                    
-                                    <input type="file" 
-                                    name="archivos"
-                                    className="form-control-file btn"  
-                                    multiple="true" 
-                                    onChange={this.handleInput} />
-                                </div>
-                            </div>                            
-                            <div className="row justify-content-end mt-2">
-                                <div className="col-9">                                    
-                                <input type="submit" className="btn btn-primary col-12" value="Guardar"/>
-                                </div>
-                            </div>                            
-                        </form>
-                    </div>
-                </div>                
+                                <div className="row">
+                                    <div className="col-3">
+                                        <label className="h3">Archivos / Fotos</label>
+                                    </div>
+                                    <div className="col-9 mt-2">                                    
+                                        <input type="file" 
+                                        name="archivos"
+                                        className="form-control-file btn"  
+                                        multiple="true" 
+                                        onChange={this.handleInput} />
+                                    </div>
+                                </div>                            
+                                <div className="row justify-content-end mt-2">
+                                    <div className="col-9">                                    
+                                    <input type="submit" className="btn btn-primary col-12" value="Guardar"/>
+                                    </div>
+                                </div>                            
+                            </form>
+                        </div>
+                    </div>                
+                </div>
             </div>
         );
     }

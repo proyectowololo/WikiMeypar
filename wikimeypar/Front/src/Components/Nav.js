@@ -29,9 +29,9 @@ class Nav extends Component{
                                     </li>
                                     <li>Glosario</li>
                                     <li>Apéndices</li>
-                                    <li>Descargas y manuales</li>
+                                    <li><Link to="/manuales">Descargas y manuales</Link></li>
                                     <li>Reporta tu incidencia</li>
-                                    <li class="btn-cta"><Link to="/signup">Sign Up></Link></li>
+                                    <li class="btn-cta"><Link to="/signup">Sign Up</Link></li>
                                     <li class="btn-cta"><Link to="/login">Login</Link></li>
                                 </ul>
                             </div>
