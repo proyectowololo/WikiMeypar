@@ -10,7 +10,7 @@ export default class FORM extends Component{
             archivos: '',
             fecha:'',
             usuario:'',
-            consecutivo: "0",
+            consecutivo: 0,
             barcode: '456'
         };
         this.handleInput = this.handleInput.bind(this);
@@ -52,7 +52,7 @@ export default class FORM extends Component{
                     <Nav/>
                         <form >
                             <div className="row">
-                                <div className="col-3 text-right">
+                                <div className="col-3 text-center">
                                     <label className="h3 font-wieght-bold">
                                         Consecutivo 
                                         <span className="text-danger"> N° </span>
@@ -61,9 +61,9 @@ export default class FORM extends Component{
                                 <div className="col-9 text-center">                                    
                                     <label className="h3 font-wieght-bold">Incidencia -  
                                     {                                        
-                                        (this.state.consecutivo.length == 1)?
+                                        (this.state.consecutivo.toString().length == 1)?
                                             " 00" + this.state.consecutivo :
-                                            (this.state.consecutivo.length == 2)?
+                                            (this.state.consecutivo.toString().length == 2)?
                                                 " 0" + this.state.consecutivo : " " + this.state.consecutivo
                                     }
                                     </label>  
