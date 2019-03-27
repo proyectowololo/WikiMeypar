@@ -24,7 +24,7 @@ router.post("/login", async (req, res) => {
 
 
 router.post("/signup", (req, res) => {
-  if(req.body.password !== req.body.confirmPassword) return res.status(500).json({msg: "Las cotraseñas no coinciden"});
+  if(req.body.password !== req.body.confirmPassword) return res.status(500).json({msg: "Las contraseñas no coinciden"});
   const salt = bcrypt.genSaltSync(256);
   const hashedPassword = bcrypt.hashSync(req.body.password, salt);
   User.create({

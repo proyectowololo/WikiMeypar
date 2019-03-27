@@ -16,7 +16,6 @@ const Router = () => (
         <Route exact path="/signup" component={Registro} />
         <Route exact path="/boleta" component={Boleta} />
         <Route exact path="/log" component={Log} />
-        <Route exact path="/manuales" component={Manuales} />
     </Switch>
 )
 
