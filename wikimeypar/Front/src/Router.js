@@ -6,6 +6,7 @@ import Login from './adan/LoginForm'
 import Registro from './adan/RegistroForm'
 import Boleta from './adan/BoletaServicioFrom'
 import Log from './snh/ADV_PS_Efectivo'
+import Manuales from './adan/Manuales'
 
 const Router = () => (
     <Switch>
