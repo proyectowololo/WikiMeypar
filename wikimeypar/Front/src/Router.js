@@ -9,12 +9,12 @@ import Log from './snh/ADV_PS_Efectivo'
 
 const Router = () => (
     <Switch>
-    <Route exact path="/" component={Landing} />
-    <Route exact path="/incidencia" component={Incidencia} />
-    <Route exact path="/login" component={Login} />
-    <Route exact path="/signup" component={Registro} />
-    <Route exact path="/boleta" component={Boleta} />
-    <Route exact path="/log" component={Log} />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/incidencia" component={Incidencia} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Registro} />
+        <Route exact path="/boleta" component={Boleta} />
+        <Route exact path="/log" component={Log} />
     </Switch>
 )
 

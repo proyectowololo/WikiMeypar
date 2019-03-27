@@ -1,83 +1,92 @@
 import React, {Component} from "react";
+import {signup} from '../service';
 
-export default class Login extends Component{
+class Signup extends Component{
+
     constructor(){
-        super();
-        this.state = {
-            nombre: '',
-            apellidos: '',
-            correo: '',
-            telefono: '',
-            usuario:'',
-            pass: ''
-        }
-
-        this.handleInput = this.handleInput.bind(this);
-    }
-    handleInput(e){
-        //console.log(e.target.value, e.target.name);
-        const {value , name} = e.target; 
-        this.setState({
-            [name] : value
-        });
-    }
+      super();
+      this.state =  {
+          user: {
+              email: "",
+              password: "",
+              confirmPassword: ""
+          }
+      }
+  }
+  
+  handleChange = (e) => {
+    const {user} = this.state;
+    let field = e.target.name;
+    user[field] = e.target.value;
+    this.setState({user});
+    console.log(this.state);
+  };
+  
+  handleSubmit = (e) => {
+    e.preventDefault();
+    signup(this.state.user, this.props.history)
+  };
+  
+  
     render(){
-        return(
-            <div className="container">                
-                <div className="margin-auto">
-                    <div className="row mt-2">
-                        <form className="center-block card">
-                            <div className="bg-primary text-center rounded">
-                                <label className="h2 text-center">Registro</label>
-                            </div>
-                            <div className="col-md form-group mt-2">
-                                <div className="form-group">
-                                    <label for="text">Nombre:</label>
-                                    <input 
-                                    name="nombre" 
-                                    type="text" 
-                                    className="form-control" 
-                                    onChange={this.handleInput}
-                                    placeholder=""/>
-                                </div>
-                                <div className="form-group">
-                                    <label for="text">Apellidos:</label>
-                                    <input 
-                                    name="apellidos" 
-                                    type="text" 
-                                    className="form-control" 
-                                    onChange={this.handleInput}/>
-                                </div>  
-                                <div className="form-group">
-                                    <label for="text">Correo Electr&oacute;nico:</label>
-                                    <input 
-                                    name="correo" 
-                                    type="email" 
-                                    className="form-control" 
-                                    onChange={this.handleInput}/>
-                                </div>  
-                                <div className="form-group">
-                                    <label for="text">Telefono:</label>
-                                    <input 
-                                    name="telefono" 
-                                    type="text" 
-                                    className="form-control" 
-                                    onChange={this.handleInput}/>
-                                </div>  
-                                <div className="form-group">
-                                    <label for="text">Usuario:</label>
-                                    <input 
-                                    name="usuario" 
-                                    type="text" 
-                                    className="form-control" 
-                                    onChange={this.handleInput}/>
-                                </div>                                
-                                <button type="submit" className="btn btn-primary col-12">Registrar</button>
-                            </div>
-                        </form>
-                    </div>                    
-                </div>
-            </div>
-        );
+      let {email, password, confirmPassword} = this.state.user;
+      return(
+  
+  <div>
+  
+  <div class="limiter">
+          <div class="container-login100">
+              <div class="wrap-login100 p-t-30 p-b-50">
+                  <span class="login100-form-title p-b-41">
+                      ¡Bienvenido!
+                  </span>
+                  <form class="login100-form validate-form p-b-33 p-t-5" onSubmit={this.handleSubmit}>
+  
+                      <div class="wrap-input100 validate-input" data-validate = "Enter email">
+              <input class="input100" 
+                              onChange={this.handleChange}
+                              type="email"
+                              name="email"
+                              value={email} placeholder="Tu email" />
+                          <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                      </div>
+  
+                      <div class="wrap-input100 validate-input" data-validate="Enter password">
+              <input class="input100" 
+                              onChange={this.handleChange}
+                              type="password"
+                              name="password"
+                              value={password} placeholder="Password"/>
+                          <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                      </div>
+  
+                      <div class="wrap-input100 validate-input" data-validate="Confirm password">
+              <input class="input100" 
+                              onChange={this.handleChange}
+                              type="password"
+                              name="confirmPassword"
+                              value={confirmPassword} placeholder="Confirma Password"/>
+                          <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                      </div>
+  
+                      <div class="container-login100-form-btn m-t-32">
+                          <button class="login100-form-btn" type="submit">
+                              Registrarse
+                          </button>
+                      </div>
+  
+                  </form>
+              </div>
+          </div>
+      </div>
+      
+  
+      <div id="dropDownSelect1"></div>
+         
+      </div>
+  
+      )
     }
-}
+  }
+  
+  export default Signup;

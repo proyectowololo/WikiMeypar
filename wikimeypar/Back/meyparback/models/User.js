@@ -16,6 +16,9 @@ const postSchema = new Schema({
     },
     username: {
         type: String
+    },
+    password: {
+        type: String
     }   
 },{
     timestamps: {
