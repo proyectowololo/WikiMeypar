@@ -17,7 +17,7 @@ export default class BoletaServicio extends Component{
                 {nombre:"Juan"},
                 {nombre:"Pedro"},
                 {nombre:"Que gusto de Verte"},
-                {nombre:"Super que eras licenciado"}
+                {nombre:"Supe que eras licenciado"}
             ],
             estados:[
                 {nombre:"Solido"},
@@ -55,7 +55,7 @@ export default class BoletaServicio extends Component{
         var Estados = this.state.estados;       
         return(
             <div className="container mt-3 card">                                
-                <form className="form">
+                <form className="form"> {/*onSubmit="preventDefault()"*/ }
                     <div className="row"> {/* Encabezado del Documento */}
                         <div className="col-6">
                             <img src={logo} width="300px" />
@@ -107,7 +107,7 @@ export default class BoletaServicio extends Component{
                             <div className="row">
                                 <div className="col-3 text-center">
                                     <label className="font-weight-bold">CDMX</label>
-                                    <input type="radio" className="form-control inline-block" name="CDMX-INt" value="CDMX" checked/>
+                                    <input type="radio" className="form-control inline-block" name="CDMX-INt" value="CDMX"/>
                                 </div>
                                 <div className="col-3 text-center">
                                     <label className="font-weight-bold">Interior Rep.</label>
@@ -194,7 +194,7 @@ export default class BoletaServicio extends Component{
                         <div className="col">
                             <label className="h3 font-weight-bold">Material</label>
                             <table className="table  table-bordered">
-                                <thead class="thead-dark">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th  className="h4">Cantidad</th>
                                         <th  className="h4" colSpan="2">
@@ -249,13 +249,13 @@ export default class BoletaServicio extends Component{
                                 </div>
                                 <div className="col">
                                     <div className="col-md">
-                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-1" checked/>
+                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-1"/>
                                     </div>
                                     <div className="col-md">
-                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-2" checked/>
+                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-2"/>
                                     </div>
                                     <div className="col-md">
-                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-3" checked/>
+                                        <label className="font-weight-bold">Si</label><input type="radio" name="group-3"/>
                                     </div>
                                     <div className="col-md">
                                         <label className="font-weight-bold">Fecha: </label><input type="date" className="form-control"/>

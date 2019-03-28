@@ -30,7 +30,12 @@ router.post("/signup", (req, res) => {
   User.create({
       username: req.body.username,
       email: req.body.email,
-      password: hashedPassword
+      password: hashedPassword,       
+      nombre: req.body.name,
+      apellidos: req.body.surname,
+      telefono: req.body.telefono,
+      userstatus: false,
+      usertype: 'Undefined'
   })
       .then(() => {
           res.status(201).json({msg: "Usuario creado con éxito"})

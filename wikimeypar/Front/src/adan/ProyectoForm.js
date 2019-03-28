@@ -1,42 +1,9 @@
-import React, {Component} from "react";
-import {signup} from '../service';
+import React, {Component} from 'react'
 
-class Signup extends Component{
-
-    constructor(){
-      super();
-      this.state =  {
-          user: {
-              username: "",
-              email: "",
-              password: "",
-              confirmPassword: "",
-              nombre:"",
-              apellidos:"",
-              telefono:"",              
-          }
-      }
-  }
-  
-  handleChange = (e) => {
-    const {user} = this.state;
-    let field = e.target.name;
-    user[field] = e.target.value;
-    this.setState({user});
-    console.log(this.state);
-  };
-  
-  handleSubmit = (e) => {
-    e.preventDefault();
-    signup(this.state.user, this.props.history)
-  };
-  
-  
+export default class Proyectos extend Component{
     render(){
-      let {username,email, password, confirmPassword, nombre, apellidos, telefono} = this.state.user;
-      return(
-  
-  <div>
+        return(
+            <div>
    <div className="container">                
                 <div className="margin-auto">
                     <div className="row mt-2">
@@ -114,9 +81,6 @@ class Signup extends Component{
                 </div>
             </div>         
       </div>
-  
-      )
+        );
     }
-  }
-  
-  export default Signup;
+}
