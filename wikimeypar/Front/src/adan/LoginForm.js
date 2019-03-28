@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from 'react-router-dom';
 
 export default class Login extends Component{
     constructor(){
@@ -42,7 +43,7 @@ export default class Login extends Component{
                                     className="form-control" 
                                     onChange={this.handleInput}/>
                                 </div>
-                                <button type="submit" className="btn btn-primary col-12">Ingresar</button>
+                                <Link to="/" type="submit" className="btn btn-primary col-12">Ingresar</Link>
                             </div>
                         </form>
                     </div>                    
