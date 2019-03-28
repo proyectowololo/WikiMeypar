@@ -48,3 +48,14 @@ export const updateUser = (id, form) => {
             console.log(user);
         })
 };
+
+export const addProyect = (auth, history) => {
+    axios.post(`${base_url}/auth/newProyecto`, auth)
+        .then(res => {
+            console.log("res",res)
+            history.push("/main/admin")
+        })
+        .catch(err => {
+            console.error("+++>", err.response.data.msg);
+        })
+  };

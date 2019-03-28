@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const upload = require("../helpers/multer");
 const auth = require("../helpers/auth");
+const Proyectos = require("../models/newProyecto");
 
 router.post("/login", async (req, res) => {
   const user = await User.findOne({email: req.body.email});
@@ -46,10 +47,23 @@ router.post("/signup", (req, res) => {
 
 });
 
-
-
-
-
+router.post("/newProyecto", (req, res) => {
+    Proyectos.create({
+        nombre: req.body.nombre,
+        representante: req.body.representante,
+        telefono: req.body.telefono,
+        pais: req.body.pais,
+        direccion: req.body.direccion,
+        userstatus: true,
+    })
+        .then(() => {
+            res.status(201).json({msg: "Proyecto creado con éxito"})
+        })
+        .catch(err => {
+            res.status(500).json({err, msg: "No se pudo crear el Proyecto"})
+        })
+  
+  });
 
 router.patch("/:id",upload.single("picture"), (req, res) => {
   let user = {};
