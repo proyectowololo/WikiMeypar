@@ -19,7 +19,13 @@ const postSchema = new Schema({
     },
     password: {
         type: String
-    }   
+    },
+    usertype :{
+        type: String
+    },
+    userstatus: {
+        type: Boolean
+    }
 },{
     timestamps: {
         createdAt: "created_at",
