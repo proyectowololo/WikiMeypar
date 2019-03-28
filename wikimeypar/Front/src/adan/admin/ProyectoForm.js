@@ -1,42 +1,56 @@
 import React, {Component} from 'react'
 
 export default class Proyectos extend Component{
+    constructor(){
+        super();
+        this.state = {
+            id
+        }
+    }
     render(){
         return(
-            <div>
-   <div className="container">                
+        <div>
+            <div className="container">                
                 <div className="margin-auto">
                     <div className="row mt-2">
                         <form className="center-block card"  onSubmit={this.handleSubmit}>
                             <div className="bg-primary text-center rounded">
-                                <label className="h2 text-center">Registro</label>
+                                <label className="h2 text-center">Registro de Proyectos</label>
                             </div>
                             <div className="col-md form-group mt-2">
+                                <div className="row">
+                                    <div className="col">
+
+                                    </div>
+                                    <div className="col">
+
+                                    </div>
+                                </div>
                                 <div className="form-group">
-                                    <label for="text">Nombre:</label>
+                                    <label for="text">Nombre del Proyecto:</label>
                                     <input 
                                     onChange={this.handleChange}
                                     type="text"
                                     name="nombre"
-                                    value={nombre} placeholder="Nombre"
-                                   className="form-control" />
+                                    value={nombre} placeholder="Nombre del Proyecto"
+                                className="form-control" />
                                 </div>
                                 <div className="form-group">
                                     <label for="text">Apellidos:</label>
                                     <input 
-                                     onChange={this.handleChange}
-                                     type="text"
-                                     name="apellidos"
-                                     value={apellidos} placeholder="Apellidos"                                    
+                                    onChange={this.handleChange}
+                                    type="text"
+                                    name="apellidos"
+                                    value={apellidos} placeholder="Apellidos"                                    
                                     className="form-control"/>
                                 </div>  
                                 <div className="form-group">
                                     <label for="text">Correo Electr&oacute;nico:</label>
                                     <input className="form-control"
-                                      onChange={this.handleChange}
-                                      type="email"
-                                      name="email"
-                                      value={email} placeholder="Correo Electr&oacute;nico" />
+                                    onChange={this.handleChange}
+                                    type="email"
+                                    name="email"
+                                    value={email} placeholder="Correo Electr&oacute;nico" />
                                 </div>  
                                 <div className="form-group">
                                     <label for="text">Telefono:</label>
@@ -45,24 +59,24 @@ export default class Proyectos extend Component{
                                     type="text"
                                     name="telefono"
                                     value={telefono} placeholder="N&uacute;mero de Tel&eacute;fono"
-                                   className="form-control"/>
+                                className="form-control"/>
                                 </div>  
                                 <div className="form-group">
                                     <label for="text">Usuario:</label>
                                     <input 
-                                     onChange={this.handleChange}
-                                     type="text"
-                                     name="username"
-                                     value={username} placeholder="Nombre de Usuario"
+                                    onChange={this.handleChange}
+                                    type="text"
+                                    name="username"
+                                    value={username} placeholder="Nombre de Usuario"
                                     className="form-control" />
                                 </div>  
                                 <div className="form-group">
                                     <label for="text">Contraseña:</label>
                                     <input 
-                                   onChange={this.handleChange}
-                                   type="password"
-                                   name="password"
-                                   value={password} placeholder="Contrase&ntilde;a"
+                                onChange={this.handleChange}
+                                type="password"
+                                name="password"
+                                value={password} placeholder="Contrase&ntilde;a"
                                     className="form-control" />
                                 </div> 
                                 <div className="form-group">
@@ -80,7 +94,7 @@ export default class Proyectos extend Component{
                     </div>                    
                 </div>
             </div>         
-      </div>
+        </div>
         );
     }
 }
