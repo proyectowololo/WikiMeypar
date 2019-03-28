@@ -1,13 +1,33 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {addProyect} from '../../service';
 
-export default class Proyectos extend Component{
+export default class Proyectos extends Component{
     constructor(){
         super();
         this.state = {
-            id
+            proyect:{
+                nombre: '',
+                representado: '',
+                telefono:'',
+                pais:'',
+                direccion:''
+            }           
         }
-    }
+    };
+    handleChange = (e) => {
+        const {proyect} = this.state;
+        let field = e.target.name;
+        proyect[field] = e.target.value;
+        this.setState({proyect});
+        console.log(this.state);
+    };
+    
+    handleSubmit = (e) => {
+        e.preventDefault();
+        addProyect(this.state.proyect, this.props.history)
+    };
     render(){
+          let {nombre,representado,telefono,pais,direccion} = this.state.proyect;
         return(
         <div>
             <div className="container">                
@@ -15,79 +35,65 @@ export default class Proyectos extend Component{
                     <div className="row mt-2">
                         <form className="center-block card"  onSubmit={this.handleSubmit}>
                             <div className="bg-primary text-center rounded">
-                                <label className="h2 text-center">Registro de Proyectos</label>
+                                <label className="h2 text-center">Registro de Nuevos Proyectos</label>
                             </div>
                             <div className="col-md form-group mt-2">
                                 <div className="row">
-                                    <div className="col">
-
+                                    <div className="form-group col">
+                                        <label for="text">Nombre del Proyecto:</label>
+                                        <input 
+                                        onChange={this.handleChange}
+                                        type="text"
+                                        name="nombre" 
+                                        value={nombre}
+                                        placeholder="Nombre del Proyecto"
+                                        className="form-control" />
                                     </div>
-                                    <div className="col">
-
+                                    <div className="col form-group">
+                                        <label for="text">Representado por:</label>
+                                        <input 
+                                        onChange={this.handleChange}
+                                        type="text"
+                                        name="representado" 
+                                        value={representado}
+                                        placeholder="Nombre del Representante"                                    
+                                        className="form-control"/>
+                                    </div>  
+                                </div>     
+                                <div className="row">
+                                    <div className="form-group col">
+                                        <label for="text">Tel&eacute;fono:</label>
+                                        <input 
+                                        onChange={this.handleChange}
+                                        type="text"
+                                        name="telefono" 
+                                        value={telefono}
+                                        placeholder="Telefono"
+                                        className="form-control" />
                                     </div>
-                                </div>
-                                <div className="form-group">
-                                    <label for="text">Nombre del Proyecto:</label>
-                                    <input 
-                                    onChange={this.handleChange}
-                                    type="text"
-                                    name="nombre"
-                                    value={nombre} placeholder="Nombre del Proyecto"
-                                className="form-control" />
-                                </div>
-                                <div className="form-group">
-                                    <label for="text">Apellidos:</label>
-                                    <input 
-                                    onChange={this.handleChange}
-                                    type="text"
-                                    name="apellidos"
-                                    value={apellidos} placeholder="Apellidos"                                    
-                                    className="form-control"/>
-                                </div>  
-                                <div className="form-group">
-                                    <label for="text">Correo Electr&oacute;nico:</label>
-                                    <input className="form-control"
-                                    onChange={this.handleChange}
-                                    type="email"
-                                    name="email"
-                                    value={email} placeholder="Correo Electr&oacute;nico" />
-                                </div>  
-                                <div className="form-group">
-                                    <label for="text">Telefono:</label>
-                                    <input 
-                                    onChange={this.handleChange}
-                                    type="text"
-                                    name="telefono"
-                                    value={telefono} placeholder="N&uacute;mero de Tel&eacute;fono"
-                                className="form-control"/>
-                                </div>  
-                                <div className="form-group">
-                                    <label for="text">Usuario:</label>
-                                    <input 
-                                    onChange={this.handleChange}
-                                    type="text"
-                                    name="username"
-                                    value={username} placeholder="Nombre de Usuario"
-                                    className="form-control" />
-                                </div>  
-                                <div className="form-group">
-                                    <label for="text">Contraseña:</label>
-                                    <input 
-                                onChange={this.handleChange}
-                                type="password"
-                                name="password"
-                                value={password} placeholder="Contrase&ntilde;a"
-                                    className="form-control" />
-                                </div> 
-                                <div className="form-group">
-                                    <label for="text">Confirma tu Contraseña:</label>
-                                    <input 
-                                    onChange={this.handleChange}
-                                    type="password"
-                                    name="confirmPassword"
-                                    value={confirmPassword} placeholder="Confirma Contrase&ntilde;a"
-                                    className="form-control" />
-                                </div>                               
+                                    <div className="col form-group">
+                                        <label for="text">Pa&iacute;s:</label>
+                                        <input 
+                                        onChange={this.handleChange}
+                                        type="text"
+                                        name="pais" 
+                                        value={pais}
+                                        placeholder="Pais"                                    
+                                        className="form-control"/>
+                                    </div>                                           
+                                </div>      
+                                <div className="row">
+                                    <div className="form-group col">
+                                        <label for="text">Direcci&oacute;n Completa:</label>
+                                        <input 
+                                        onChange={this.handleChange}
+                                        type="text"
+                                        name="direccion" 
+                                        value={direccion}
+                                        placeholder="Calle, número, Delegación/Municipio, CP"
+                                        className="form-control" />
+                                    </div>
+                                </div>                        
                                 <button type="submit" className="btn btn-primary col-12">Registrar</button>
                             </div>
                         </form>

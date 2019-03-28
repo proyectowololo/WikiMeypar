@@ -8,6 +8,7 @@ import Boleta from './adan/BoletaServicioFrom'
 import Log from './snh/ADV_PS_Efectivo'
 import Manuales from './adan/Manuales'
 import Admin from './Components/Admin'
+import Proyectos from './adan/admin/ProyectoForm'
 
 const Router = () => (
 
@@ -19,6 +20,7 @@ const Router = () => (
         <Route exact path="/boleta" component={Boleta} />
         <Route exact path="/log" component={Log} />
         <Route exact path="/main/admin" component={Admin} />
+        <Route exact path="/main/admin/proyectos" component={Proyectos} />
     </Switch>
 )
 
