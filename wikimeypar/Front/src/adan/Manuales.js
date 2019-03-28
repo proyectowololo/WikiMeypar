@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Nav from '../Components/Nav';
 import folder from './img/carpeta.png';
 import PDF from './img/pdf.png';
-import MUM from "./Manuales/MANUAL_USUARIO_MEYPARK.pdf";
+//import MUM from "./Manuales/MANUAL_USUARIO_MEYPARK.pdf";
 
 export default class MANUALES extends Component{
     constructor(){
