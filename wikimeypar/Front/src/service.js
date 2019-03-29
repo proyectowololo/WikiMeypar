@@ -59,3 +59,15 @@ export const addProyect = (auth, history) => {
             console.error("+++>", err.response.data.msg);
         })
   };
+
+
+  export const addInquery = (auth, history) => {
+    axios.post(`${base_url}/auth/newIncidencia`, auth)
+        .then(res => {
+            console.log("res",res)
+            history.push("/incidencia")
+        })
+        .catch(err => {
+            console.error("+++>", err.response.data.msg);
+        })
+  };
