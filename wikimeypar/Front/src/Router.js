@@ -7,8 +7,11 @@ import Registro from './adan/RegistroForm'
 import Boleta from './adan/BoletaServicioFrom'
 import Log from './snh/ADV_PS_Efectivo'
 import Manuales from './adan/Manuales'
+import Admin from './Components/Admin'
+import Proyectos from './adan/admin/ProyectoForm'
 
 const Router = () => (
+
     <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/incidencia" component={Incidencia} />
@@ -16,6 +19,8 @@ const Router = () => (
         <Route exact path="/signup" component={Registro} />
         <Route exact path="/boleta" component={Boleta} />
         <Route exact path="/log" component={Log} />
+        <Route exact path="/main/admin" component={Admin} />
+        <Route exact path="/main/admin/proyectos" component={Proyectos} />
     </Switch>
 )
 
