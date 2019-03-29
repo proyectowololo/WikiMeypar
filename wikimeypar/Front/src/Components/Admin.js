@@ -7,7 +7,7 @@ import {Nav} from 'react-bootstrap'
 import jake from '../img/jake.png'
 import {Link} from 'react-router-dom'
 import NuevoProy from '../adan/admin/ProyectoForm'
-import axios from 'axios'
+import CreaRol from '../adan/admin/rolesUsuario'
 import Registro from '../adan/RegistroForm'
 
 
@@ -17,7 +17,8 @@ class Admin extends Component{
         this.state = {
             forms:{
                 NProject: false,
-                CreateUss: false
+                CreateUss: false,
+                CreateRol: false
             }          
         }
     }
@@ -25,7 +26,8 @@ class Admin extends Component{
         const {forms} = this.state;
         let field = e.target.name;
         forms.NProject = false;        
-        forms.CreateUss = false;        
+        forms.CreateUss = false; 
+        forms.CreateRol = false;       
         this.setState({forms});
         forms[field] = (forms[field] ? false:true);        
         this.setState({forms});
@@ -61,7 +63,8 @@ class Admin extends Component{
 
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="#">Ver Usuarios</Dropdown.Item>
-                                        <Dropdown.Item name="CreateUss" onClick={this.mosclt}>Nuevo Usuario</Dropdown.Item>                            
+                                        <Dropdown.Item name="CreateUss" onClick={this.mosclt}>Nuevo Usuario</Dropdown.Item> 
+                                        <Dropdown.Item name="CreateRol" onClick={this.mosclt}>Roles de Usuario</Dropdown.Item>                            
                                     </Dropdown.Menu>
                                 </Dropdown>
                         </Nav.Link>
@@ -70,7 +73,7 @@ class Admin extends Component{
                     </>
                 </div>
                 <div className="row justify-content-center" >
-                    <div className="col-4">
+                    <div className="col2">
                         <Card style={{ width: '15rem' }}>
                             <Card.Img variant="top" src={jake} />
                             <Card.Body>
@@ -85,6 +88,7 @@ class Admin extends Component{
                     <div className="col">
                         { this.state.forms.NProject ? <NuevoProy />:null}
                         { this.state.forms.CreateUss ? <Registro />:null}
+                        { this.state.forms.CreateRol ? <CreaRol />:null}
                     </div>
                 </div>
              
