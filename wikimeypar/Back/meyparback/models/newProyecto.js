@@ -17,7 +17,7 @@ const postSchema = new Schema({
     direccion: {
         type: String
     },
-    userstatus: {
+    projectstatus: {
         type: Boolean
     }
 },{
