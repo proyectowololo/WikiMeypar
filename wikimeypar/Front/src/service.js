@@ -50,13 +50,11 @@ export const updateUser = (id, form) => {
 };
 
 export const addProyect = (auth, history) => {
-    var datos = [];
     axios.post(`${base_url}/auth/newProyecto`, auth)
         .then(res => {
             console.log("res",res)
             alert("Datos almacenados Currectamente");
             //history.push(`${base_url}/auth/main/admin`)
-            datos = res;
         })
         .catch(err => {
             console.error("+++>", err.response.data.msg);

@@ -2,38 +2,75 @@ import React, {Component} from 'react'
 import {Card} from 'react-bootstrap'
 import {Dropdown} from 'react-bootstrap'
 import {Button} from 'react-bootstrap'
+import {Navbar} from 'react-bootstrap'
+import {Nav} from 'react-bootstrap'
 import jake from '../img/jake.png'
 import {Link} from 'react-router-dom'
 import NuevoProy from '../adan/admin/ProyectoForm'
 import axios from 'axios'
+import Registro from '../adan/RegistroForm'
 
 
 class Admin extends Component{
     constructor(){
         super();
         this.state = {
-            showNProject: false
+            forms:{
+                NProject: false,
+                CreateUss: false
+            }          
         }
     }
-    mosclt = () => {
-        var MO = this.state.showNProject ? false:true;
-        this.setState({showNProject : MO});
+    mosclt = (e) => {
+        const {forms} = this.state;
+        let field = e.target.name;
+        forms.NProject = false;        
+        forms.CreateUss = false;        
+        this.setState({forms});
+        forms[field] = (forms[field] ? false:true);        
+        this.setState({forms});
+        console.log(forms);
     }
     render(){
         return(
             <div>
+                <div className="black">
+                <>
+                    <Navbar bg="dark" variant="dark">
+                        <Navbar.Brand>
+                            Home
+                        </Navbar.Brand>
+                        <Nav className="mr-auto">
+                        <Nav.Link>
+                            <Dropdown>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                        Proyectos
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#">Ver Proyectos</Dropdown.Item>
+                                        <Dropdown.Item  name="NProject" onClick={this.mosclt}>Nuevo Proyecto</Dropdown.Item>                            
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Dropdown >
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                        Usuarios
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#">Ver Usuarios</Dropdown.Item>
+                                        <Dropdown.Item name="CreateUss" onClick={this.mosclt}>Nuevo Usuario</Dropdown.Item>                            
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                        </Nav.Link>
+                        </Nav>                        
+                    </Navbar>                                     
+                    </>
+                </div>
                 <div className="row justify-content-center" >
                     <div className="col-4">
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                Proyectos
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#">Ver Proyectos</Dropdown.Item>
-                                <Dropdown.Item onClick={this.mosclt}>Nuevo Proyecto</Dropdown.Item>                            
-                            </Dropdown.Menu>
-                        </Dropdown>
                         <Card style={{ width: '15rem' }}>
                             <Card.Img variant="top" src={jake} />
                             <Card.Body>
@@ -46,8 +83,8 @@ class Admin extends Component{
                         </Card>
                     </div>
                     <div className="col">
-                        { this.state.showNProject ? <NuevoProy />:null}
-                        
+                        { this.state.forms.NProject ? <NuevoProy />:null}
+                        { this.state.forms.CreateUss ? <Registro />:null}
                     </div>
                 </div>
              

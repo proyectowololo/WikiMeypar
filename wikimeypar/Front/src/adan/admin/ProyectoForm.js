@@ -12,7 +12,7 @@ export default class Proyectos extends Component{
                 pais:'',
                 direccion:''
             }           
-        }
+        }        
     };
     handleChange = (e) => {
         const {proyect} = this.state;
