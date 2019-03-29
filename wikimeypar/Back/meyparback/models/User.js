@@ -21,7 +21,7 @@ const postSchema = new Schema({
         type: String
     },
     usertype :{
-        type: String
+        type: String,
     },
     userstatus: {
         type: Boolean

@@ -54,7 +54,7 @@ router.post("/newProyecto", (req, res) => {
         telefono: req.body.telefono,
         pais: req.body.pais,
         direccion: req.body.direccion,
-        userstatus: true,
+        projectstatus: true,
     })
         .then(() => {
             res.status(201).json({msg: "Proyecto creado con éxito"})
