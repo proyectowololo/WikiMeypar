@@ -12,7 +12,7 @@ export default class Proyectos extends Component{
                 pais:'',
                 direccion:''
             }           
-        }
+        }        
     };
     handleChange = (e) => {
         const {proyect} = this.state;
@@ -23,14 +23,14 @@ export default class Proyectos extends Component{
     };
     
     handleSubmit = (e) => {
-        e.preventDefault();
-        addProyect(this.state.proyect, this.props.history)
+        //e.preventDefault();
+        addProyect(this.state.proyect, this.props.history);       
     };
     render(){
           let {nombre,representado,telefono,pais,direccion} = this.state.proyect;
         return(
         <div>
-            <div className="container">                
+            <div className="">                
                 <div className="margin-auto">
                     <div className="row mt-2">
                         <form className="center-block card"  onSubmit={this.handleSubmit}>
@@ -47,7 +47,7 @@ export default class Proyectos extends Component{
                                         name="nombre" 
                                         value={nombre}
                                         placeholder="Nombre del Proyecto"
-                                        className="form-control" />
+                                        className="form-control" required/>
                                     </div>
                                     <div className="col form-group">
                                         <label for="text">Representado por:</label>
