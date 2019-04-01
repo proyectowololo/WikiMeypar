@@ -2,29 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-    nombre: {
+    titulo: {
         type: String
     },
-    apellido: {
+    incidencia: {
         type: String
     },
-    email: {
+    archivos: {
         type: String
     },
-    telefono: {
+    usuario: {
         type: String
     },
-    username: {
+    consecutivo: {
         type: String
-    },
-    password: {
-        type: String
-    },
-    usertype :{
-        type: String,
-    },
-    userstatus: {
-        type: Boolean
     }
 },{
     timestamps: {
@@ -33,4 +24,4 @@ const postSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("User", postSchema);
+module.exports = mongoose.model("Incidencias", postSchema);

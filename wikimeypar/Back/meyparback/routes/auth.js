@@ -7,6 +7,7 @@ const upload = require("../helpers/multer");
 const auth = require("../helpers/auth");
 const Proyectos = require("../models/newProyecto");
 const RolesUss = require("../models/Rol");
+const Incidencias = require("../models/newIncidencia");
 
 router.post("/login", async (req, res) => {
   const user = await User.findOne({email: req.body.email});
@@ -76,6 +77,22 @@ router.post("/newProyecto", (req, res) => {
         })
         .catch(err => {
             res.status(500).json({err, msg: "No se pudo crear el Rol"})
+        })
+    });
+
+  router.post("/newIncidencia", (req, res) => {
+    Incidencias.create({
+        titulo: req.body.titulo,
+        incidencia: req.body.incidencia,
+        archivos: req.body.archivos,
+        usuario: req.body.usuario,
+        consecutivo: req.body.consecutivo,
+    })
+        .then(() => {cv
+            res.status(201).json({msg: "Incidencia creada con éxito"})
+        })
+        .catch(err => {
+            res.status(500).json({err, msg: "No se pudo crear la Incidencia"})
         })
   
   });
