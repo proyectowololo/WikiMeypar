@@ -60,3 +60,15 @@ export const addProyect = (auth, history) => {
             console.error("+++>", err.response.data.msg);
         })
   };
+
+  export const addRol = (auth, history) => {
+    axios.post(`${base_url}/auth/newRol`, auth)
+        .then(res => {
+            console.log("res",res)
+            alert("Datos almacenados Currectamente");
+            //history.push(`${base_url}/auth/main/admin`)
+        })
+        .catch(err => {
+            console.error("+++>", err.response.data.msg);
+        })
+  };

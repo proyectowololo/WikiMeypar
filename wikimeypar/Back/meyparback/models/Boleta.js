@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-    numService: {type: Int},
-    service: {type: Int},
+    numService: {type: Number},
+    service: {type: Number},
     proyecto: {type: String},
     representado: {type: String},
     telefono: {type: String},

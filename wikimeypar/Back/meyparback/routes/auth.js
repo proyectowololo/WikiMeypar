@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const upload = require("../helpers/multer");
 const auth = require("../helpers/auth");
 const Proyectos = require("../models/newProyecto");
+const RolesUss = require("../models/Rol");
 
 router.post("/login", async (req, res) => {
   const user = await User.findOne({email: req.body.email});
@@ -61,6 +62,20 @@ router.post("/newProyecto", (req, res) => {
         })
         .catch(err => {
             res.status(500).json({err, msg: "No se pudo crear el Proyecto"})
+        })
+  
+  });
+
+  router.post("/newRol", (req, res) => {
+    RolesUss.create({
+        descripcion: req.body.descripcion,        
+        status: true,
+    })
+        .then(() => {
+            res.status(201).json({msg: "Rol creado con éxito"})
+        })
+        .catch(err => {
+            res.status(500).json({err, msg: "No se pudo crear el Rol"})
         })
   
   });
