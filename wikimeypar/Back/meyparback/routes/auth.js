@@ -88,7 +88,7 @@ router.post("/newProyecto", (req, res) => {
         usuario: req.body.usuario,
         consecutivo: req.body.consecutivo,
     })
-        .then(() => {cv
+        .then(() => {
             res.status(201).json({msg: "Incidencia creada con éxito"})
         })
         .catch(err => {
