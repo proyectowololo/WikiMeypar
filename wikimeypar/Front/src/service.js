@@ -62,11 +62,11 @@ export const addProyect = (params, history) => {
   };
 
   export const addRol = (params, history) => {
-    axios.post(`${base_url}/auth/newRol`, params)
+    return axios.post(`${base_url}/auth/newRol`, params)
         .then(res => {
             console.log("res",res)
             alert("Datos almacenados Currectamente");
-            //history.push(`${base_url}/auth/main/admin`);
+            return res.data;
         })
         .catch(err => {
             console.error("+++>", err.response.data.msg);
@@ -83,4 +83,29 @@ export const addProyect = (params, history) => {
             console.error("+++>", err.response.data.msg);
         })
   };
+
+  export const deleteRol = (params) => {
+    return axios.post(`${base_url}/auth/delRol`, params)
+        .then(res => {
+            console.log("res",res.data)
+            alert("Datos eliminados Currectamente");
+            return res.data;
+        })
+        .catch(err => {
+            console.error("+++>", err);
+        })
+  };
+
+export const statusRol = (params) => {
+    console.log(params)
+    return axios.post(`${base_url}/auth/statusRol`, params)
+        .then(res => {
+            console.log("res",res.data)
+            alert("Datos eliminados Currectamente");
+            return res.data;
+        })
+        .catch(err => {
+            console.error("+++>", err);
+        })
+};
 

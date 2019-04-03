@@ -72,8 +72,8 @@ router.post("/newProyecto", (req, res) => {
         descripcion: req.body.descripcion,        
         status: true,
     })
-        .then(() => {
-            res.status(201).json({msg: "Rol creado con éxito"})
+        .then((datos) => {
+            res.status(201).json({msg: "Rol creado con éxito"});
         })
         .catch(err => {
             res.status(500).json({err, msg: "No se pudo crear el Rol"})
@@ -104,5 +104,17 @@ router.get("/viewRol", (req,res) => {
     });      
    
   });
+
+router.post("/delRol", (req,res)=>{    
+    RolesUss.findByIdAndRemove(req.body._id,(err,dt)=>{
+        if(!err) res.status(201).json({msg: "Rol eliminado Currectamente"});        
+    });       
+});
+
+router.post("/statusRol", (req,res)=>{    
+    RolesUss.findByIdAndUpdate((req.body._id, req.body.status),(err,dt)=>{
+        if(!err) res.status(201).json({msg: "Rol actualizado Currectamente"});        
+    });       
+});
 
 module.exports = router;
