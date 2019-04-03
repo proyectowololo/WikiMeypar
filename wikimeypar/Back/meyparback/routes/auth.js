@@ -99,13 +99,20 @@ router.post("/newProyecto", (req, res) => {
   });
 
 router.get("/viewRol", (req,res) => {
-   RolesUss.find({},(err,datos) =>{       
+    RolesUss.find({},(err,datos) =>{       
         //console.log(datos);
         res.json(datos);
     });      
    
   });
 
+  router.get("/viewIncidencia", (req,res) => {
+    Incidencias.find({},(err,datos) =>{       
+         //console.log(datos);
+         res.json(datos);
+     });      
+    
+   });
 router.post("/delRol", (req,res)=>{    
     RolesUss.findByIdAndRemove(req.body._id,(err)=>{
         if(!err) res.status(201).json({msg: "Rol eliminado Currectamente"});        

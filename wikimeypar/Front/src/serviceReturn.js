@@ -12,3 +12,14 @@ export const verRol = () => {
     });    
     return info;
   };
+
+  export const verincidencia = () => {
+    var info = axios.get(`${base_url}/auth/newIncidencia`)
+    .then(res =>{
+      return res;
+    })
+    .catch(err => {
+      console.log(err);
+    });    
+    return info;
+  };

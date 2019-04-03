@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import Nav from '../Components/Nav';
 import {addInquery} from '../service';
-
+import {verincidencia} from '../serviceReturn';
+import { finished } from 'stream';
+import { isContext } from 'vm';
 export default class inquery extends Component{
     constructor(){
         super();
+
         this.state = {
             inquery:{
                 titulo: '',
@@ -12,8 +15,21 @@ export default class inquery extends Component{
                 archivos: '',
                 usuario:'',
                 consecutivo: 999
+            },
+            Datos:[]
             }
-        };
+        }
+        componentDidMount(){
+            this.titulo.focus();
+            verincidencia()
+            .then(res => {            
+                this.setState({Datos:res.data});       
+                console.log(this.state.Datos);
+            })
+            .catch(err =>{
+                console.log(err)
+            });    
+
         //this.handleInput = this.handleInput.bind(this);
     }
 handleChange = (e) => {
@@ -38,10 +54,6 @@ handleSubmit = (e) => {
     }*/
 
 
-    componentDidMount(){
-        this.titulo.focus();
-    }    
-
     SelText(e){
         let seleccion = document.getSelection();
         /*if(seleccion != ""){
@@ -62,7 +74,10 @@ handleSubmit = (e) => {
         } */       
     }
     
-    render(){        
+    render(){
+
+        var DT = this.state.Datos;
+        //var DT = db.incidencias.find();
         return(
             <div>
                  <Nav/>
@@ -136,9 +151,31 @@ handleSubmit = (e) => {
                                     <div className="col-9">                                    
                                     <input type="submit" className="btn btn-primary col-12" value="Guardar"/>
                                     </div>
-                                </div>                            
+                                </div>
                             </form>
                         </div>
+
+                        <div className="col-7 card"> 
+                        <table class="table table-hover">
+                            <thead className="thead-dark"> 
+                                <tr key="">
+                                    <th>Consecutivo</th>
+                                    <th>Titulo</th>
+                                    <th>Incidencia</th>
+                                </tr>                                
+                            </thead>
+                            <tbody>
+                        {DT.map((obj)=>
+                            <tr key={obj._id}>
+                                <td>{obj.consecutivo}</td>
+                                <td>{obj.titulo}</td>
+                                <td>{obj.incidencia}</td>
+                            </tr>
+                        )}                        
+                            </tbody>
+                        </table>
+                    </div>                                  
+
                     </div>                
                 </div>
             </div>
