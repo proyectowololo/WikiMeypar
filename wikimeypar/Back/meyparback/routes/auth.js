@@ -97,20 +97,12 @@ router.post("/newProyecto", (req, res) => {
   
   });
 
-router.patch("/:id",upload.single("picture"), (req, res) => {
-  let user = {};
-
-  Object.keys(req.body).forEach(key => {
-      user[key] = req.body[key];
+router.get("/viewRol", (req,res) => {
+   RolesUss.find({},(err,datos) =>{       
+        //console.log(datos);
+        res.json(datos);
+    });      
+   
   });
-  if(req.file) user.profile_picture = req.file.url;
-
-
-  User.findByIdAndUpdate(req.params.id, {$set: user}, {new:true})
-      .then(user => {
-          res.status(200).json({user});
-      })
-});
-
 
 module.exports = router;
