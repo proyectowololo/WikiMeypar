@@ -49,8 +49,8 @@ export const updateUser = (id, form) => {
         })
 };
 
-export const addProyect = (auth, history) => {
-    axios.post(`${base_url}/auth/newProyecto`, auth)
+export const addProyect = (params, history) => {
+    axios.post(`${base_url}/auth/newProyecto`, params)
         .then(res => {
             console.log("res",res)
             alert("Datos almacenados Currectamente");
@@ -61,8 +61,8 @@ export const addProyect = (auth, history) => {
         })
   };
 
-  export const addRol = (auth, history) => {
-    axios.post(`${base_url}/auth/newRol`, auth)
+  export const addRol = (params, history) => {
+    axios.post(`${base_url}/auth/newRol`, params)
         .then(res => {
             console.log("res",res)
             alert("Datos almacenados Currectamente");
@@ -83,3 +83,4 @@ export const addProyect = (auth, history) => {
             console.error("+++>", err.response.data.msg);
         })
   };
+

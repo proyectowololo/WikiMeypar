@@ -15,7 +15,7 @@ const postSchema = new Schema({
         type: String
     },
     consecutivo: {
-        type: String
+        type: Number
     }
 },{
     timestamps: {
