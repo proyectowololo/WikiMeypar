@@ -19,7 +19,7 @@ const Router = () => (
         <Route exact path="/boleta" component={Boleta} />
         <Route exact path="/main/admin" component={Admin} />
         <Route exact path="/main/admin/proyectos" component={Proyectos} />
-        {/*<Route exact path="/listamanuales" component={ManualesList} /> */}
+        {/*<Route exact path="/listamanuales" component={ManualesList} />*/}
     </Switch>
 )
 
