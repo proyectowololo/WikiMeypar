@@ -39,24 +39,30 @@ export default class Roles extends Component{
         e.preventDefault();
         addRol(this.state.roles, this.props.history)
         .then(res => {            
-            if(res.msg == "Rol creado con éxito"){                               
-                this.cargaContent();
+            if(res.msg === "Rol creado con éxito"){    
+                this.setState({descripcion:''});
                 this.nameInput.value='';
+                this.cargaContent();                
             }
         });       
     };
     changeStatus = (e) =>{
         let datos = {_id:e.target.value, status: e.target.checked};
         statusRol(datos);
-        //alert(e.target.checked);
+        this.cargaContent();
     }
     deleteRol = (e) =>{
         let res = window.confirm("Estas seguro de eliminar el Rol?")
         //console.log(e.target.value)
         let Id = {_id:e.target.value};
         if(res){
-            deleteRol(Id);
-            this.cargaContent();
+            deleteRol(Id)
+            .then(res => {            
+                if(res.msg == "Rol eliminado Currectamente"){                               
+                    this.cargaContent();
+                    this.nameInput.value='';
+                }
+            });
         }
     }
     render(){

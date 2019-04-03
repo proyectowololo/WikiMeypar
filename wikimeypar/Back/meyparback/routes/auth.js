@@ -106,14 +106,17 @@ router.get("/viewRol", (req,res) => {
   });
 
 router.post("/delRol", (req,res)=>{    
-    RolesUss.findByIdAndRemove(req.body._id,(err,dt)=>{
+    RolesUss.findByIdAndRemove(req.body._id,(err)=>{
         if(!err) res.status(201).json({msg: "Rol eliminado Currectamente"});        
     });       
 });
 
 router.post("/statusRol", (req,res)=>{    
-    RolesUss.findByIdAndUpdate((req.body._id, req.body.status),(err,dt)=>{
-        if(!err) res.status(201).json({msg: "Rol actualizado Currectamente"});        
+    RolesUss.findByIdAndUpdate(req.body._id,{status:req.body.status},(err)=>{
+        if(!err) 
+            res.status(201).json({msg: "Rol actualizado Currectamente"});        
+        else
+            res.status(500).json({err, msg: "No se pudo actualizar el Rol"})
     });       
 });
 

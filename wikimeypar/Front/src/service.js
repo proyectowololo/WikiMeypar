@@ -88,7 +88,7 @@ export const addProyect = (params, history) => {
     return axios.post(`${base_url}/auth/delRol`, params)
         .then(res => {
             console.log("res",res.data)
-            alert("Datos eliminados Currectamente");
+            //alert("Datos eliminados Currectamente");
             return res.data;
         })
         .catch(err => {
@@ -101,7 +101,7 @@ export const statusRol = (params) => {
     return axios.post(`${base_url}/auth/statusRol`, params)
         .then(res => {
             console.log("res",res.data)
-            alert("Datos eliminados Currectamente");
+            //alert("Datos eliminados Currectamente");
             return res.data;
         })
         .catch(err => {
