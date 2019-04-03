@@ -98,11 +98,19 @@ router.post("/newProyecto", (req, res) => {
   });
 
 router.get("/viewRol", (req,res) => {
-   RolesUss.find({},(err,datos) =>{       
+    RolesUss.find({},(err,datos) =>{       
         //console.log(datos);
         res.json(datos);
     });      
    
   });
+
+  router.get("/newIncidencia", (req,res) => {
+    Incidencias.find({},(err,datos) =>{       
+         //console.log(datos);
+         res.json(datos);
+     });      
+    
+   });
 
 module.exports = router;
