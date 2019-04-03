@@ -106,7 +106,7 @@ router.get("/viewRol", (req,res) => {
   });
 
   router.get("/viewIncidencia", (req,res) => {
-    Incidencias.find({},(err,datos) =>{       
+    Incidencias.find({consecutivo:'005'},(err,datos) =>{       
          //console.log(datos);
          res.json(datos);
      });      

@@ -14,7 +14,7 @@ export const verRol = () => {
   };
 
   export const verincidencia = () => {
-    var info = axios.get(`${base_url}/auth/newIncidencia`)
+    var info = axios.get(`${base_url}/auth/viewIncidencia`)
     .then(res =>{
       return res;
     })

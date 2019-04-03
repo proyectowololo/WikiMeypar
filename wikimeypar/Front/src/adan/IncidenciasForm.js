@@ -77,7 +77,6 @@ handleSubmit = (e) => {
     render(){
 
         var DT = this.state.Datos;
-        //var DT = db.incidencias.find();
         return(
             <div>
                  <Nav/>
