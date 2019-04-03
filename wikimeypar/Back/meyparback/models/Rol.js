@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
+    cons :{
+        type: Number,
+        default: 1
+    },
     descripcion: {
         type: String
     },

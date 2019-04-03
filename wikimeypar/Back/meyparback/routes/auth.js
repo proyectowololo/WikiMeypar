@@ -69,6 +69,7 @@ router.post("/newProyecto", (req, res) => {
 
   router.post("/newRol", (req, res) => {
     RolesUss.create({
+        cons: req.body.id_cons,
         descripcion: req.body.descripcion,        
         status: true,
     })

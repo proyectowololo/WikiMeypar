@@ -10,6 +10,7 @@ export default class Roles extends Component{
         super();
         this.state = {
             roles : {
+                id_cons: null,
                 descripcion:''
             },
             Datos:[]
@@ -21,8 +22,11 @@ export default class Roles extends Component{
     cargaContent = () =>{
         verRol()
         .then(res => {            
-            this.setState({Datos:res.data});       
-            //console.log(this.state.Datos);
+            this.setState({Datos:res.data}); 
+            let num_dts = this.state.Datos.length-1;   
+            let cons = (num_dts > -1)?this.state.Datos[num_dts]['cons']:0;
+            this.setState({roles:{id_cons:cons+1}});
+            console.log(this.state);
         })
         .catch(err =>{
             console.log(err)
@@ -41,7 +45,7 @@ export default class Roles extends Component{
         .then(res => {            
             if(res.msg === "Rol creado con éxito"){    
                 this.setState({descripcion:''});
-                this.nameInput.value='';
+                this.nameInput.value=null;
                 this.cargaContent();                
             }
         });       
@@ -66,7 +70,6 @@ export default class Roles extends Component{
         }
     }
     render(){
-        let {descripcion} = this.state.roles;
         var DT = this.state.Datos;
         return(
             <div>
@@ -80,7 +83,7 @@ export default class Roles extends Component{
                                     onChange={this.handleChange}
                                     type="text"
                                     name="descripcion"
-                                    value={descripcion} placeholder="Descripción"                                    
+                                    placeholder="Descripción"                                    
                                     className="form-control"
                                     required
                                     ref={(input) => { this.nameInput = input; }} />
@@ -93,6 +96,7 @@ export default class Roles extends Component{
                         <table className="table table-hover">
                             <thead className="thead-dark"> 
                                 <tr key="">
+                                    <th>#</th>
                                     <th>Descripción</th>
                                     <th>Creado</th>
                                     <th>Modificado</th>
@@ -103,6 +107,7 @@ export default class Roles extends Component{
                             <tbody>
                         {DT.map((obj)=>
                             <tr key={obj._id}>
+                                <td>{obj.cons}</td>
                                 <td>{obj.descripcion}</td>
                                 <td>{obj.created_at}</td>
                                 <td>{obj.updated_at}</td>
