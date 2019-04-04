@@ -119,20 +119,22 @@ export default class Roles extends Component{
                                 <td>{obj.descripcion}</td>
                                 <td>{obj.created_at}</td>
                                 <td>{obj.updated_at}</td>
-                                <td className="text-center"><input type="checkbox" defaultChecked={obj.status} onClick={this.changeStatus} value={obj._id}/></td>
                                 {(obj.descripcion != "Administrador")? 
-                                <td className="text-center btn-group btn-group-xs">
-                                    <button 
-                                        className="btn btn-outline-danger btn-sm" 
-                                        onClick={this.deleteRol} 
-                                        value={obj._id}>
-                                        X
-                                    </button>
+                                <td className="text-center"><input type="checkbox" defaultChecked={obj.status} onClick={this.changeStatus} value={obj._id}/></td>:null
+                                }
+                                {(obj.descripcion != "Administrador")? 
+                                <td className="text-center btn-group btn-group-xs">                                    
                                     <button 
                                         className="btn btn-outline-primary btn-sm" 
                                         onClick={this.editRol} 
                                         value={obj._id}>
                                         Editar
+                                    </button>
+                                    <button 
+                                        className="btn btn-outline-danger btn-sm" 
+                                        onClick={this.deleteRol} 
+                                        value={obj._id}>
+                                        Eliminar
                                     </button>
                                 </td>
                                 :null}
