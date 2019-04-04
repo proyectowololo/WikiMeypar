@@ -49,8 +49,8 @@ export const updateUser = (id, form) => {
         })
 };
 
-export const addProyect = (auth, history) => {
-    axios.post(`${base_url}/auth/newProyecto`, auth)
+export const addProyect = (params, history) => {
+    axios.post(`${base_url}/auth/newProyecto`, params)
         .then(res => {
             console.log("res",res)
             alert("Datos almacenados Currectamente");
@@ -61,6 +61,51 @@ export const addProyect = (auth, history) => {
         })
   };
 
-  export const downloadFile = (auth, history) => {
-      axios.get(`${base_url}/public/prueba.docx`, history)
-  }
+  export const addRol = (params, history) => {
+    return axios.post(`${base_url}/auth/newRol`, params)
+        .then(res => {
+            console.log("res",res)
+            alert("Datos almacenados Currectamente");
+            return res.data;
+        })
+        .catch(err => {
+            console.error("+++>", err.response.data.msg);
+        })
+  };
+
+  export const addInquery = (auth, history) => {
+    axios.post(`${base_url}/auth/newIncidencia`, auth)
+        .then(res => {
+            console.log("res",res)
+            history.push("/incidencia")
+        })
+        .catch(err => {
+            console.error("+++>", err.response.data.msg);
+        })
+  };
+
+  export const deleteRol = (params) => {
+    return axios.post(`${base_url}/auth/delRol`, params)
+        .then(res => {
+            console.log("res",res.data)
+            //alert("Datos eliminados Currectamente");
+            return res.data;
+        })
+        .catch(err => {
+            console.error("+++>", err);
+        })
+  };
+
+export const statusRol = (params) => {
+    console.log(params)
+    return axios.post(`${base_url}/auth/statusRol`, params)
+        .then(res => {
+            console.log("res",res.data)
+            //alert("Datos eliminados Currectamente");
+            return res.data;
+        })
+        .catch(err => {
+            console.error("+++>", err);
+        })
+};
+
