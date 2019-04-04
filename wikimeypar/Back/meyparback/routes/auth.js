@@ -91,7 +91,6 @@ router.post("/newProyecto", (req, res) => {
      });      
     
    });
-
    
   router.get("/viewIncidencia", (req,res) => {
     Incidencias.find({consecutivo:'005'},(err,datos) =>{       
