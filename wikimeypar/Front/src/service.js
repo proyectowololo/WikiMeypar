@@ -60,3 +60,7 @@ export const addProyect = (auth, history) => {
             console.error("+++>", err.response.data.msg);
         })
   };
+
+  export const downloadFile = (auth, history) => {
+      axios.get(`${base_url}/public/prueba.docx`, history)
+  }
