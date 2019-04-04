@@ -67,20 +67,6 @@ router.post("/newProyecto", (req, res) => {
   
   });
 
-  router.post("/newRol", (req, res) => {
-    RolesUss.create({
-        cons: req.body.id_cons,
-        descripcion: req.body.descripcion,        
-        status: true,
-    })
-        .then((datos) => {
-            res.status(201).json({msg: "Rol creado con éxito"});
-        })
-        .catch(err => {
-            res.status(500).json({err, msg: "No se pudo crear el Rol"})
-        })
-    });
-
   router.post("/newIncidencia", (req, res) => {
     Incidencias.create({
         titulo: req.body.titulo,
@@ -97,6 +83,38 @@ router.post("/newProyecto", (req, res) => {
         })
   
   });
+  
+  router.get("/viewIncidencia", (req,res) => {
+    Incidencias.find({},(err,datos) =>{       
+         //console.log(datos);
+         res.json(datos);
+     });      
+    
+   });
+
+   
+  router.get("/viewIncidencia", (req,res) => {
+    Incidencias.find({consecutivo:'005'},(err,datos) =>{       
+         //console.log(datos);
+         res.json(datos);
+     });      
+    
+   });
+/* ------------------- Inicio Roles -------------------- */
+
+router.post("/newRol", (req, res) => {
+    RolesUss.create({
+        cons: req.body.id_cons,
+        descripcion: req.body.descripcion,        
+        status: true,
+    })
+        .then((datos) => {
+            res.status(201).json({msg: "Rol creado con éxito"});
+        })
+        .catch(err => {
+            res.status(500).json({err, msg: "No se pudo crear el Rol"})
+        })
+    });
 
 router.get("/viewRol", (req,res) => {
     RolesUss.find({},(err,datos) =>{       
@@ -106,13 +124,6 @@ router.get("/viewRol", (req,res) => {
    
   });
 
-  router.get("/viewIncidencia", (req,res) => {
-    Incidencias.find({consecutivo:'005'},(err,datos) =>{       
-         //console.log(datos);
-         res.json(datos);
-     });      
-    
-   });
 router.post("/delRol", (req,res)=>{    
     RolesUss.findByIdAndRemove(req.body._id,(err)=>{
         if(!err) res.status(201).json({msg: "Rol eliminado Currectamente"});        
@@ -128,4 +139,13 @@ router.post("/statusRol", (req,res)=>{
     });       
 });
 
+router.post("/editRol", (req,res)=>{    
+    RolesUss.findByIdAndUpdate(req.body._id,{descripcion:req.body.descripcion},(err)=>{
+        if(!err) 
+            res.status(201).json({msg: "Rol actualizado Currectamente"});        
+        else
+            res.status(500).json({err, msg: "No se pudo actualizar el Rol"})
+    });       
+});
+/* ------------------- Fin Roles -------------------- */
 module.exports = router;

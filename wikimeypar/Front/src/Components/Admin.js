@@ -1,9 +1,5 @@
 import React, {Component} from 'react'
-import {Card} from 'react-bootstrap'
-import {Dropdown} from 'react-bootstrap'
-import {Button} from 'react-bootstrap'
-import {Navbar} from 'react-bootstrap'
-import {Nav} from 'react-bootstrap'
+import {Card, Dropdown, Button, Navbar, Nav} from 'react-bootstrap'
 import jake from '../img/jake.png'
 import {Link} from 'react-router-dom'
 import NuevoProy from '../adan/admin/ProyectoForm'
@@ -37,7 +33,7 @@ class Admin extends Component{
         return(
             <div>
                 <div className="black">
-                <>
+               
                     <Navbar bg="dark" variant="dark">
                         <Navbar.Brand>
                             Home
@@ -70,11 +66,11 @@ class Admin extends Component{
                         </Nav.Link>
                         </Nav>                        
                     </Navbar>                                     
-                    </>
+                   
                 </div>
                 <div className="row justify-content-center" >
-                    <div className="col2">
-                        <Card style={{ width: '15rem' }}>
+                    <div className="col-2">
+                        <Card style={{ width: '10rem' }}>
                             <Card.Img variant="top" src={jake} />
                             <Card.Body>
                                 <Card.Title>Jake el Perro</Card.Title>

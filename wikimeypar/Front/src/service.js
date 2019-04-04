@@ -61,17 +61,6 @@ export const addProyect = (params, history) => {
         })
   };
 
-  export const addRol = (params, history) => {
-    return axios.post(`${base_url}/auth/newRol`, params)
-        .then(res => {
-            console.log("res",res)
-            alert("Datos almacenados Currectamente");
-            return res.data;
-        })
-        .catch(err => {
-            console.error("+++>", err.response.data.msg);
-        })
-  };
 
   export const addInquery = (auth, history) => {
     axios.post(`${base_url}/auth/newIncidencia`, auth)
@@ -84,7 +73,32 @@ export const addProyect = (params, history) => {
         })
   };
 
-  export const deleteRol = (params) => {
+/* ------------------- Roles -------------------- */
+
+export const addRol = (params, history) => {
+    return axios.post(`${base_url}/auth/newRol`, params)
+        .then(res => {
+            console.log("res",res)
+            alert("Datos almacenados Currectamente");
+            return res.data;
+        })
+        .catch(err => {
+            console.error("+++>", err.response.data.msg);
+        })
+  };
+
+export const editarRol = (params) =>{
+    return axios.post(`${base_url}/auth/editRol`, params)
+    .then(res => {
+        console.log("res",res.data)
+        //alert("Datos eliminados Currectamente");
+        return res.data;
+    })
+    .catch(err => {
+        console.error("+++>", err);
+    })
+}
+export const deleteRol = (params) => {
     return axios.post(`${base_url}/auth/delRol`, params)
         .then(res => {
             console.log("res",res.data)
@@ -108,4 +122,3 @@ export const statusRol = (params) => {
             console.error("+++>", err);
         })
 };
-
