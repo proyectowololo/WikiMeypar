@@ -12,7 +12,7 @@ class Signup extends Component{
               password: "",
               confirmPassword: "",
               nombre:"",
-              apellidos:"",
+              apellido:"",
               telefono:"",              
           }
       }
@@ -33,7 +33,7 @@ class Signup extends Component{
   
   
     render(){
-      let {username,email, password, confirmPassword, nombre, apellidos, telefono} = this.state.user;
+      let {username,email, password, confirmPassword, nombre, apellido, telefono} = this.state.user;
       return(
   
   <div>
@@ -60,8 +60,8 @@ class Signup extends Component{
                                         <input 
                                         onChange={this.handleChange}
                                         type="text"
-                                        name="apellidos"
-                                        value={apellidos} placeholder="Apellidos"                                    
+                                        name="apellido"
+                                        value={apellido} placeholder="Apellidos"                                    
                                         className="form-control"/>
                                     </div>  
                                 </div>

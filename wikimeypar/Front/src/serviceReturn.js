@@ -23,3 +23,14 @@ export const verRol = () => {
     });    
     return info;
   };
+
+  export const verUsers = () => {
+    var info = axios.get(`${base_url}/auth/viewUss`)
+    .then(res =>{
+      return res;
+    })
+    .catch(err => {
+      console.log(err);
+    });    
+    return info;
+  };

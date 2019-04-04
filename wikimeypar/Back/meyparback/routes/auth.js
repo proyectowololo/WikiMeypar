@@ -34,8 +34,8 @@ router.post("/signup", (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword,       
-      nombre: req.body.name,
-      apellidos: req.body.surname,
+      nombre: req.body.nombre,
+      apellido: req.body.apellido,
       telefono: req.body.telefono,
       userstatus: false,
       usertype: 'Undefined'
@@ -99,7 +99,7 @@ router.post("/newProyecto", (req, res) => {
      });      
     
    });
-/* ------------------- Inicio Roles -------------------- */
+/* ---------------------------------------------------------------------------- Inicio Roles -------------------- */
 
 router.post("/newRol", (req, res) => {
     RolesUss.create({
@@ -147,4 +147,27 @@ router.post("/editRol", (req,res)=>{
     });       
 });
 /* ------------------- Fin Roles -------------------- */
+/* ---------------------------------------------------------------------------- Inicio Usuarios -------------------- */
+router.get("/viewUss", (req,res) => {
+    User.find({},(err,datos) =>{       
+        //console.log(datos);
+        res.json(datos);
+    });      
+   
+  });
+
+  router.post("/statusUss", (req,res)=>{    
+    User.findByIdAndUpdate(req.body._id,{userstatus:req.body.status},(err)=>{
+        if(!err) 
+            res.status(201).json({msg: "Estatus actualizado Currectamente"});        
+        else
+            res.status(500).json({err, msg: "No se pudo actualizar el Estatus"})
+    });       
+});
+router.post("/delUss", (req,res)=>{    
+    User.findByIdAndRemove(req.body._id,(err)=>{
+        if(!err) res.status(201).json({msg: "Usuario eliminado Currectamente"});        
+    });       
+});
+/* ------------------- Fin Usuarios -------------------- */
 module.exports = router;

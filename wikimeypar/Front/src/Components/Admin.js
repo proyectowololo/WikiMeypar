@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import NuevoProy from '../adan/admin/ProyectoForm'
 import CreaRol from '../adan/admin/rolesUsuario'
 import Registro from '../adan/RegistroForm'
+import VerUsuarios from '../adan/admin/verUsuarios'
 
 
 class Admin extends Component{
@@ -12,6 +13,7 @@ class Admin extends Component{
         super();
         this.state = {
             forms:{
+                ViewUss: false,
                 NProject: false,
                 CreateUss: false,
                 CreateRol: false
@@ -21,6 +23,7 @@ class Admin extends Component{
     mosclt = (e) => {
         const {forms} = this.state;
         let field = e.target.name;
+        forms.ViewUss = false;
         forms.NProject = false;        
         forms.CreateUss = false; 
         forms.CreateRol = false;       
@@ -58,7 +61,7 @@ class Admin extends Component{
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#">Ver Usuarios</Dropdown.Item>
+                                        <Dropdown.Item name="ViewUss" onClick={this.mosclt}>Ver Usuarios</Dropdown.Item>
                                         <Dropdown.Item name="CreateUss" onClick={this.mosclt}>Nuevo Usuario</Dropdown.Item> 
                                         <Dropdown.Item name="CreateRol" onClick={this.mosclt}>Roles de Usuario</Dropdown.Item>                            
                                     </Dropdown.Menu>
@@ -82,6 +85,7 @@ class Admin extends Component{
                         </Card>
                     </div>
                     <div className="col">
+                        { this.state.forms.ViewUss ? <VerUsuarios />:null}
                         { this.state.forms.NProject ? <NuevoProy />:null}
                         { this.state.forms.CreateUss ? <Registro />:null}
                         { this.state.forms.CreateRol ? <CreaRol />:null}

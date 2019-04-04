@@ -14,17 +14,6 @@ export const login = (auth, history) => {
         })
 };
 
-export const signup = (auth, history) => {
-  axios.post(`${base_url}/auth/signup`, auth)
-      .then(res => {
-          console.log("res",res)
-          history.push("/login")
-      })
-      .catch(err => {
-          console.error("+++>", err.response.data.msg);
-      })
-};
-
 export const getPosts = (token) => {
     return axios.get(`${base_url}/posts/`,{
         headers: {
@@ -73,7 +62,7 @@ export const addProyect = (params, history) => {
         })
   };
 
-/* ------------------- Roles -------------------- */
+/* ------------------------------------------------------- Roles --------------------------------------------- */
 
 export const addRol = (params, history) => {
     return axios.post(`${base_url}/auth/newRol`, params)
@@ -122,3 +111,41 @@ export const statusRol = (params) => {
             console.error("+++>", err);
         })
 };
+
+/* ------------------------------------------------------- Usuarios --------------------------------------------- */
+
+export const statusUss = (params) => {
+    console.log(params)
+    return axios.post(`${base_url}/auth/statusUss`, params)
+        .then(res => {
+            console.log("res",res.data)
+            //alert("Datos eliminados Currectamente");
+            return res.data;
+        })
+        .catch(err => {
+            console.error("+++>", err);
+        })
+};
+
+export const signup = (auth, history) => {
+    axios.post(`${base_url}/auth/signup`, auth)
+        .then(res => {
+            console.log("res",res)
+            history.push("/login")
+        })
+        .catch(err => {
+            console.error("+++>", err.response.data.msg);
+        })
+  };
+
+  export const deleteUss = (params) => {
+    return axios.post(`${base_url}/auth/delUss`, params)
+        .then(res => {
+            console.log("res",res.data)
+            //alert("Datos eliminados Currectamente");
+            return res.data;
+        })
+        .catch(err => {
+            console.error("+++>", err);
+        })
+  };
