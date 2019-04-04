@@ -40,10 +40,25 @@ handleChange = (e) => {
     console.log(this.state);
 };
 
+handleChange1 = (f) => {
+    const {search} = this.state;
+    let field = f.target.name;
+    search[field] = f.target.value;
+    this.setState({search});
+    console.log(this.state);
+};
+
+
 handleSubmit = (e) => {
     e.preventDefault();
     addInquery(this.state.inquery, this.props.history)
 };
+
+handleSubmit = (f) => {
+    f.preventDefault();
+    verincidencia(this.state.inquery, this.props.history)
+};
+
 
     /*handleInput(e){
         //console.log(e.target.value, e.target.name);
@@ -153,6 +168,21 @@ handleSubmit = (e) => {
                                 </div>
                             </form>
                         </div>
+                        
+                        <div>
+                            <form>
+                        <div className="row">
+                            <div className="col-3">
+                                <label className="h1">Incidencia</label>
+                            </div>
+                            <div className="col-6">
+                                <input type="text" 
+                                    name="VerInc"
+                                    className="form-control" 
+                                    ref={(input) => { this.VerInc = input;}} 
+                                    onChange={this.handleChange} />
+                            </div>
+                        </div>
 
                         <div className="col-7 card"> 
                         <table class="table table-hover">
@@ -173,8 +203,9 @@ handleSubmit = (e) => {
                         )}                        
                             </tbody>
                         </table>
-                    </div>                                  
-
+                    </div> 
+                    </form>                                 
+                    </div>
                     </div>                
                 </div>
             </div>
