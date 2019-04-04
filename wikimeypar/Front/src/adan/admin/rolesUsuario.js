@@ -1,7 +1,6 @@
 import React,{Component} from 'react'
 import {addRol, deleteRol,statusRol, editarRol} from '../../service';
 import {verRol} from '../../serviceReturn';
-import { checkPropTypes } from 'prop-types';
 
 export default class Roles extends Component{
     constructor(){
@@ -60,7 +59,7 @@ export default class Roles extends Component{
         if(res){
             deleteRol(Id)
             .then(res => {            
-                if(res.msg == "Rol eliminado Currectamente"){                               
+                if(res.msg === "Rol eliminado Currectamente"){                               
                     this.cargaContent();
                     this.nameInput.value='';
                 }
@@ -69,13 +68,15 @@ export default class Roles extends Component{
     }
     editRol = (e) =>{
         var edRol = prompt("Nuevo Nombre del Rol:");
-        let datos = {_id:e.target.value, descripcion: edRol};
-        editarRol(datos)
-        .then(res => {            
-            if(res.msg === "Rol actualizado Currectamente"){    
-                this.cargaContent();               
-            }
-        }); ;
+        if(edRol !== null && edRol.trim() !== ""){
+            let datos = {_id:e.target.value, descripcion: edRol};
+            editarRol(datos)
+            .then(res => {            
+                if(res.msg === "Rol actualizado Currectamente"){    
+                    this.cargaContent();               
+                }
+            }); 
+        }        
     }
     render(){
         var DT = this.state.Datos;
@@ -119,10 +120,10 @@ export default class Roles extends Component{
                                 <td>{obj.descripcion}</td>
                                 <td>{obj.created_at}</td>
                                 <td>{obj.updated_at}</td>
-                                {(obj.descripcion != "Administrador")? 
+                                {(obj.descripcion !== "Administrador")? 
                                 <td className="text-center"><input type="checkbox" defaultChecked={obj.status} onClick={this.changeStatus} value={obj._id}/></td>:null
                                 }
-                                {(obj.descripcion != "Administrador")? 
+                                {(obj.descripcion !== "Administrador")? 
                                 <td className="text-center btn-group btn-group-xs">                                    
                                     <button 
                                         className="btn btn-outline-primary btn-sm" 
