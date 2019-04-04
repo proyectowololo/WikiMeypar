@@ -4,12 +4,13 @@ import {addInquery} from '../service';
 import {verincidencia} from '../serviceReturn';
 import { finished } from 'stream';
 import { isContext } from 'vm';
-export default class inquery extends Component{
+export default class incidenciaV extends Component{
     constructor(){
         super();
 
         this.state = {
             inquery:{
+                id_cons: null,
                 titulo: '',
                 incidencia: '',
                 archivos: '',
@@ -21,30 +22,35 @@ export default class inquery extends Component{
         }
         componentDidMount(){
             this.titulo.focus();
-            verincidencia()
-            .then(res => {            
-                this.setState({Datos:res.data});       
-                console.log(this.state.Datos);
-            })
-            .catch(err =>{
-                console.log(err)
-            });    
-
+            this.cargaContent();
         //this.handleInput = this.handleInput.bind(this);
     }
-handleChange = (e) => {
-    const {inquery} = this.state;
-    let field = e.target.name;
-    inquery[field] = e.target.value;
-    this.setState({inquery});
-    console.log(this.state);
-};
-
-handleSubmit = (e) => {
-    e.preventDefault();
-    addInquery(this.state.inquery, this.props.history)
-};
-
+    cargaContent = () =>{
+        verincidencia()
+        .then(res => {            
+            this.setState({Datos:res.data}); 
+            let num_dts = this.state.Datos.length-1;   
+            let cons = (num_dts > -1)?this.state.Datos[num_dts]['cons']:0;
+            this.setState({inquery:{id_cons:cons+1}});
+            console.log(this.state);
+        })
+        .catch(err =>{
+            console.log(err)
+        });    
+    }
+    handleChange = (e) => {
+        const {inquery} = this.state;
+        let field = e.target.name;
+        inquery[field] = e.target.value;
+        this.setState({inquery});
+        console.log(this.state);
+    };
+    
+    handleSubmit = (e) => {
+        e.preventDefault();
+        addInquery(this.state.inquery, this.props.history)
+    };
+    
     /*handleInput(e){
         //console.log(e.target.value, e.target.name);
         const {value , name} = e.target; 
@@ -94,10 +100,7 @@ handleSubmit = (e) => {
                                     <div className="col-9 text-center">                                    
                                         <label className="h3 font-wieght-bold">Incidencia -  
                                         {                                        
-                                            (this.state.inquery.consecutivo.toString().length == 1)?
-                                                ' 00' + this.state.inquery.consecutivo :
-                                                (this.state.inquery.consecutivo.toString().length == 2)?
-                                                    ' 0' + this.state.inquery.consecutivo : " " + this.state.inquery.consecutivo
+                                            (this.state.Datos.consecutivo)
                                         }
                                         </label>  
                                     </div>
@@ -155,11 +158,25 @@ handleSubmit = (e) => {
                         </div>
                         
                         <div>
-                            
-                    <div className="col-7 card"> 
+                            <form>
+                        <div className="row">
+                            <div className="col-3">
+                                <label className="h1">Incidencia</label>
+                            </div>
+                            <div className="col-6">
+                                <input type="text" 
+                                    name="VerInc"
+                                    className="form-control" 
+                                    ref={(input) => { this.VerInc = input;}} 
+                                    onChange={this.handleChange} />
+                            </div>
+                        </div>
+
+                        <div className="col-7 card"> 
                         <table class="table table-hover">
                             <thead className="thead-dark"> 
                                 <tr key="">
+                                    <th>#</th>
                                     <th>Consecutivo</th>
                                     <th>Titulo</th>
                                     <th>Incidencia</th>
@@ -168,6 +185,7 @@ handleSubmit = (e) => {
                             <tbody>
                         {DT.map((obj)=>
                             <tr key={obj._id}>
+                                <td>{obj.cons}</td>
                                 <td>{obj.consecutivo}</td>
                                 <td>{obj.titulo}</td>
                                 <td>{obj.incidencia}</td>
@@ -176,7 +194,7 @@ handleSubmit = (e) => {
                             </tbody>
                         </table>
                     </div> 
-                                                    
+                    </form>                                 
                     </div>
                     </div>                
                 </div>
