@@ -31,7 +31,7 @@ app.use(cookieParser());
 
 // CORS
 app.use(cors({
-  origin: ["http://localhost:3000"]
+  origin: ["http://localhost:3001"]
 }));
 
 // Express View engine setup
